@@ -1,0 +1,14 @@
+WiFi :
+- Il peut y avoir des problèmes de connexion à cause des canaux.
+Installer crda pour gérer la politique de ces canaux.
+
+- Dans CUPS : penser à mettre le user dans les administrateurs
+
+- Pour trouver dans quel paquet est un binaire : pkgfile
+
+aMule :
+- dans firefox : network.protocol-handler.external.ed2k = true
+
+Matrix effect:
+tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR="1;32" grep --color "[^ ]"
+
