@@ -17,7 +17,10 @@ endif
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+
+" Color
 colorscheme molokai
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -94,3 +97,32 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+" Raccourcis pour se déplacer entre les onglets.
+" Alt-j pour déplacer l'onglet vers la gauche
+noremap <A-h> gT
+" Alt-k pour déplacer l'onglet vers la droite
+noremap <A-l> gt
+
+" Line numbers
+set nu
+
+" Tabulation of 4 spaces
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
+" 80 chararcters maximum per lines
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.*/
+
+" Special indentation for switch / case
+set cino=l1
+set cino==10
+
+" Allow editing everywhere
+set virtualedit=all
+
+" Remap the Esc command
+inoremap kj <Esc>
