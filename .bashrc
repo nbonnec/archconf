@@ -19,6 +19,6 @@ PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 
 # PATH export
 #export http_proxy='http://cache.cite-u.univ-nantes.fr:3128'
-export EDITOR=vim
+export EDITOR="vim"
 
 

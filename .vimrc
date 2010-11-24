@@ -125,4 +125,4 @@ set cino==10
 set virtualedit=all
 
 " Remap the Esc command
-inoremap kj <Esc>
+inoremap lk <Esc>
