@@ -1,4 +1,4 @@
- #######################
+#######################
 # -     Général     - #
 #######################
 update_interval 1            # Intervalle de rafraîchessement.
@@ -26,8 +26,8 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 alignment top_middle            # Position sur l'écran.
 gap_x 0                    # Ecart avec le bord gauche ou droit de l'écran.
 gap_y 0                  # Ecart avec le bord haut ou bas de l'écran.
-# minimum_size 1440 900 # comment for KDE
-maximum_width 1400
+minimum_size 1280 800 
+maximum_width 1280
 
 
 #######################
@@ -57,27 +57,26 @@ lua_draw_hook_pre ring_stats
 TEXT
 
 ${voffset 46}${alignr}${sysname} ${kernel} sur ${machine}
-${alignr}Intel Core 2 Duo T8300 @ 2.40GHz
 ${alignr}Conky ${conky_version}
 ${voffset 46}${goto 360}${font Santana:size=12}epoch : ${time %s}${alignr}${uptime_short}${font}
 ${voffset 5}${goto 340}${hr 2}
 
-${voffset 105}${goto 700}+
-${goto 700}A
-${goto 693}RCH
-${goto 686}ARCHA
-${goto 686}RCHARC
-${goto 679}; HARCH;
-${goto 672}+AR.CHARC
-${goto 665}+HARCHARCHA
-${goto 658}RCHARCHARCHAR;
-${goto 651}CHARCHARCHARCHA+
-${goto 644}RCHARCH   ARCHARC
-${goto 630}.HARCHA;     ;RCH;`".
-${goto 623}.ARCHARC;     ;HARCH.
-${goto 623}ARCHARCHA.   .RCHARCHA`
-${goto 616}RCHARC'           'HARCHA
-${goto 609};RCHA                 RCHA;
-${goto 609}RC'                     'HA
-${goto 602}R'                         `C
-${goto 595}'                            `
+# ${voffset 105}${goto 700}+
+# ${goto 700}A
+# ${goto 693}RCH
+# ${goto 686}ARCHA
+# ${goto 686}RCHARC
+# ${goto 679}; HARCH;
+# ${goto 672}+AR.CHARC
+# ${goto 665}+HARCHARCHA
+# ${goto 658}RCHARCHARCHAR;
+# ${goto 651}CHARCHARCHARCHA+
+# ${goto 644}RCHARCH   ARCHARC
+# ${goto 630}.HARCHA;     ;RCH;`".
+# ${goto 623}.ARCHARC;     ;HARCH.
+# ${goto 623}ARCHARCHA.   .RCHARCHA`
+# ${goto 616}RCHARC'           'HARCHA
+# ${goto 609};RCHA                 RCHA;
+# ${goto 609}RC'                     'HA
+# ${goto 602}R'                         `C
+# ${goto 595}'                            `

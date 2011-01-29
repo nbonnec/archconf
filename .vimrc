@@ -118,11 +118,16 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.*/
 
 " Special indentation for switch / case
-set cino=l1
 set cino==10
 
 " Allow editing everywhere
 set virtualedit=all
 
+" Bells
+set errorbells
+set novisualbell
+set vb t_vb=
+
 " Remap the Esc command
 inoremap lk <Esc>
+inoremap kj <Esc>
