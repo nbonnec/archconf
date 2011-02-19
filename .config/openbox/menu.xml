@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu>
+	<menu id="root-menu" label="OpenBox 3">
+		<menu id="1" label="Development">
+			<item label="GDB"> <action name="Execute">
+				<execute>xterm -e gdb</execute>
+			</action> </item>
+			<item label="IDLE"> <action name="Execute">
+				<execute>idle</execute>
+			</action> </item>
+			<item label="LibreOffice Writer/Web"> <action name="Execute">
+				<execute>loweb</execute>
+			</action> </item>
+			<item label="OpenJDK Monitoring &amp; Management Console"> <action name="Execute">
+				<execute>jconsole</execute>
+			</action> </item>
+			<item label="OpenJDK Policy Tool"> <action name="Execute">
+				<execute>policytool</execute>
+			</action> </item>
+			<item label="Python"> <action name="Execute">
+				<execute>xterm -e python</execute>
+			</action> </item>
+			<item label="Qt Assistant"> <action name="Execute">
+				<execute>assistant</execute>
+			</action> </item>
+			<item label="Qt Designer"> <action name="Execute">
+				<execute>designer</execute>
+			</action> </item>
+			<item label="Qt Linguist"> <action name="Execute">
+				<execute>linguist</execute>
+			</action> </item>
+		</menu>
+		<menu id="2" label="Editors">
+			<item label="AA Fire"> <action name="Execute">
+				<execute>xterm -e aafire -driver slang</execute>
+			</action> </item>
+			<item label="GVim"> <action name="Execute">
+				<execute>gvim</execute>
+			</action> </item>
+			<item label="Nano"> <action name="Execute">
+				<execute>xterm -e nano</execute>
+			</action> </item>
+			<item label="Vi"> <action name="Execute">
+				<execute>xterm -e vi</execute>
+			</action> </item>
+			<item label="Vim"> <action name="Execute">
+				<execute>xterm -e vim</execute>
+			</action> </item>
+		</menu>
+		<menu id="18" label="Games">
+			<menu id="10" label="Arcade">
+				<item label="PacMan"> <action name="Execute">
+					<execute>pacman</execute>
+				</action> </item>
+			</menu>
+		</menu>
+		<menu id="6" label="Graphics">
+			<item label="LibreOffice Draw"> <action name="Execute">
+				<execute>lodraw</execute>
+			</action> </item>
+		</menu>
+		<menu id="7" label="Multimedia">
+			<item label="ALSA mixer"> <action name="Execute">
+				<execute>xterm -e alsamixer</execute>
+			</action> </item>
+			<item label="Amarok"> <action name="Execute">
+				<execute>amarok</execute>
+			</action> </item>
+			<item label="Gaupol"> <action name="Execute">
+				<execute>gaupol</execute>
+			</action> </item>
+			<item label="VLC media player"> <action name="Execute">
+				<execute>vlc</execute>
+			</action> </item>
+		</menu>
+		<menu id="5" label="Network">
+			<item label="aLinkCreator"> <action name="Execute">
+				<execute>alc</execute>
+			</action> </item>
+			<item label="aMule"> <action name="Execute">
+				<execute>amule</execute>
+			</action> </item>
+			<item label="aMuleGUI"> <action name="Execute">
+				<execute>amulegui</execute>
+			</action> </item>
+			<item label="Avahi SSH Server Browser"> <action name="Execute">
+				<execute>bssh</execute>
+			</action> </item>
+			<item label="Avahi VNC Server Browser"> <action name="Execute">
+				<execute>bvnc</execute>
+			</action> </item>
+			<item label="ELinks"> <action name="Execute">
+				<execute>xterm -e elinks</execute>
+			</action> </item>
+			<item label="FireFox"> <action name="Execute">
+				<execute>firefox</execute>
+			</action> </item>
+			<item label="LFTP"> <action name="Execute">
+				<execute>xterm -e lftp</execute>
+			</action> </item>
+			<item label="Mail"> <action name="Execute">
+				<execute>xterm -e mail</execute>
+			</action> </item>
+			<item label="Mail Reader"> <action name="Execute">
+				<execute>exo-open --launch MailReader</execute>
+			</action> </item>
+			<item label="PS3 Media Server"> <action name="Execute">
+				<execute>ps3mediaserver</execute>
+			</action> </item>
+			<item label="TkVNC"> <action name="Execute">
+				<execute>xterm -e tkvnc</execute>
+			</action> </item>
+			<item label="Web Browser"> <action name="Execute">
+				<execute>exo-open --launch WebBrowser</execute>
+			</action> </item>
+			<item label="wxCas"> <action name="Execute">
+				<execute>wxcas</execute>
+			</action> </item>
+			<item label="Zenmap"> <action name="Execute">
+				<execute>zenmap</execute>
+			</action> </item>
+			<item label="Zenmap (as root)"> <action name="Execute">
+				<execute>/usr/share/zenmap/su-to-zenmap.sh</execute>
+			</action> </item>
+		</menu>
+		<menu id="3" label="Office">
+			<item label="LibreOffice"> <action name="Execute">
+				<execute>libreoffice</execute>
+			</action> </item>
+			<item label="LibreOffice Base"> <action name="Execute">
+				<execute>lobase</execute>
+			</action> </item>
+			<item label="LibreOffice Calc"> <action name="Execute">
+				<execute>localc</execute>
+			</action> </item>
+			<item label="LibreOffice Impress"> <action name="Execute">
+				<execute>loimpress</execute>
+			</action> </item>
+			<item label="LibreOffice Writer"> <action name="Execute">
+				<execute>lowriter</execute>
+			</action> </item>
+		</menu>
+		<menu id="39" label="Other">
+			<item label="Help"> <action name="Execute">
+				<execute>khelpcenter</execute>
+			</action> </item>
+			<item label="LibreOffice Quickstarter"> <action name="Execute">
+				<execute>libreoffice -quickstart -nologo -nodefault</execute>
+			</action> </item>
+			<item label="Wicd"> <action name="Execute">
+				<execute>wicd-client</execute>
+			</action> </item>
+		</menu>
+		<menu id="19" label="Shells">
+			<item label="Dash"> <action name="Execute">
+				<execute>xterm -e dash -i</execute>
+			</action> </item>
+			<item label="GIT"> <action name="Execute">
+				<execute>xterm -e git</execute>
+			</action> </item>
+			<item label="rxvt-unicode"> <action name="Execute">
+				<execute>urxvt</execute>
+			</action> </item>
+			<item label="SUN VirtualBox"> <action name="Execute">
+				<execute>VirtualBox</execute>
+			</action> </item>
+			<item label="Thunar File Manager"> <action name="Execute">
+				<execute>Thunar</execute>
+			</action> </item>
+			<item label="Xterm"> <action name="Execute">
+				<execute>xterm</execute>
+			</action> </item>
+			<item label="XTerm (Unicode)"> <action name="Execute">
+				<execute>uxterm</execute>
+			</action> </item>
+		</menu>
+		<menu id="37" label="System">
+			<menu id="36" label="Settings">
+				<menu id="21" label="GNOME">
+					<item label="Pop-Up Notifications"> <action name="Execute">
+						<execute>notification-properties</execute>
+					</action> </item>
+					<item label="Startup Applications"> <action name="Execute">
+						<execute>gnome-session-properties</execute>
+					</action> </item>
+				</menu>
+				<menu id="35" label="Xfce">
+					<item label="File Manager"> <action name="Execute">
+						<execute>thunar-settings</execute>
+					</action> </item>
+					<item label="Preferred Applications"> <action name="Execute">
+						<execute>exo-preferred-applications</execute>
+					</action> </item>
+				</menu>
+				<item label="ATI Catalyst Control Center"> <action name="Execute">
+					<execute>amdcccle</execute>
+				</action> </item>
+				<item label="Customize Look and Feel"> <action name="Execute">
+					<execute>lxappearance</execute>
+				</action> </item>
+				<item label="Manage Printing"> <action name="Execute">
+					<execute>xdg-open http://localhost:631/</execute>
+				</action> </item>
+				<item label="Openbox Configuration Manager"> <action name="Execute">
+					<execute>obconf</execute>
+				</action> </item>
+			</menu>
+			<item label="Avahi Zeroconf Browser"> <action name="Execute">
+				<execute>avahi-discover</execute>
+			</action> </item>
+			<item label="Bulk Rename"> <action name="Execute">
+				<execute>/usr/lib/Thunar/ThunarBulkRename</execute>
+			</action> </item>
+			<item label="Disk Utility"> <action name="Execute">
+				<execute>palimpsest</execute>
+			</action> </item>
+			<item label="GDM flexiserver"> <action name="Execute">
+				<execute>gdmflexiserver</execute>
+			</action> </item>
+			<item label="GDM flexiserver in Xnest"> <action name="Execute">
+				<execute>gdmflexiserver -n</execute>
+			</action> </item>
+			<item label="Nepomuk Backup"> <action name="Execute">
+				<execute>nepomukbackup</execute>
+			</action> </item>
+			<item label="pstree"> <action name="Execute">
+				<execute>xterm -e pstree.x11</execute>
+			</action> </item>
+			<item label="pstree"> <action name="Execute">
+				<execute>xterm -e pstree</execute>
+			</action> </item>
+			<item label="pstree"> <action name="Execute">
+				<execute>xterm -e /usr/bin/pstree.x11</execute>
+			</action> </item>
+			<item label="Top"> <action name="Execute">
+				<execute>xterm -e top</execute>
+			</action> </item>
+		</menu>
+		<menu id="38" label="Utilities">
+			<item label="File Manager"> <action name="Execute">
+				<execute>exo-open --launch FileManager</execute>
+			</action> </item>
+			<item label="Info"> <action name="Execute">
+				<execute>xterm -e info</execute>
+			</action> </item>
+			<item label="Smb4K"> <action name="Execute">
+				<execute>smb4k</execute>
+			</action> </item>
+			<item label="Terminal Emulator"> <action name="Execute">
+				<execute>exo-open --launch TerminalEmulator</execute>
+			</action> </item>
+		</menu>
+		<separator/>
+		<menu id="40" label="OpenBox">
+			<menu id="client-list-menu"/>
+			<item label="Reconfigure"> <action name="Reconfigure"/> </item>
+			<separator/>
+			<item label="Exit"> <action name="Exit"/> </item>
+		</menu>
+	</menu>
+</openbox_menu>
