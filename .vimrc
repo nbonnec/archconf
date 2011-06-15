@@ -17,9 +17,6 @@ endif
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-set shell=C:/cygwin/bin/bash
-set shellcmdflag=--login\ -i\ -c
-set shellxquote=\"
 
 " Color
 colorscheme wombat
