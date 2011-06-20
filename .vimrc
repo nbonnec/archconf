@@ -19,10 +19,16 @@ endif
 set nocompatible
 
 " Color
-colorscheme wombat
+colorscheme wombat256
 
 " Font
-set guifont=Courier_New:h11:cANSI:
+if has("gui_running")
+    if has("gui_gtk2")
+        :set guifont=Liberation\ mono\ 12
+    elseif has("gui_win32")
+        :set guifont=Courier_New:h11:cANSI:
+    endif
+endif
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
