@@ -12,3 +12,5 @@ aMule :
 Matrix effect:
 tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR="1;32" grep --color "[^ ]"
 
+Firefox :
+- Animer les .gif une seule fois : animation_mode -> once
