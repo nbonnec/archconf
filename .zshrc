@@ -13,6 +13,8 @@ eval `dircolors $HOME/.zsh/colors`
 autoload -U zutil
 autoload -U compinit
 autoload -U complist
+autoload -U promptinit
+promptinit
 
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
