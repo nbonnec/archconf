@@ -1,13 +1,13 @@
 " An example for a vimrc file.
 "
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2008 Dec 17
+" Maintainer: Bram Moolenaar <Bram@vim.org>
+" Last change: 2008 Dec 17
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
+"      for Amiga:  s:.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+"    for OpenVMS:  sys$login:.vimrc
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -19,20 +19,29 @@ endif
 set nocompatible
 
 " Color
-colorscheme molokai
+colorscheme wombat256
+
+" Font
+if has("gui_running")
+    if has("gui_gtk2")
+        :set guifont=Liberation\ mono\ 12
+    elseif has("gui_win32")
+        :set guifont=Courier_New:h11:cANSI:
+    endif
+endif
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup " keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=50 " keep 50 lines of command line history
+set ruler " show the cursor position all the time
+set showcmd " display incomplete commands
+set incsearch " do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -86,7 +95,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -95,9 +104,8 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+ \ | wincmd p | diffthis
 endif
-
 " Raccourcis pour se déplacer entre les onglets.
 " Alt-j pour déplacer l'onglet vers la gauche
 noremap <A-h> gT
@@ -108,26 +116,49 @@ noremap <A-l> gt
 set nu
 
 " Tabulation of 4 spaces
-set expandtab
+set noexpandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-" 80 chararcters maximum per lines
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.*/
+" Show when a line exceeds 80 chars
+" au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
+highlight Overlength ctermbg=red ctermfg=white guibg=#592929
+au BufWinEnter * match Overlength /\%81v.*/
+
+" Highlight Tabs and Spaces
+" highlight Tab ctermbg=darkgray guibg=darkgray
+" au BufWinEnter * let w:m2=matchadd('Tab', '\t', -1)
+highlight Space ctermbg=darkblue guibg=darkblue
+au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
+set list listchars=tab:»·,trail:·
 
 " Special indentation for switch / case
-set cino==10
+set cino=l1
+" Indentation when in unclosed (.
+set cino=(0
 
 " Allow editing everywhere
 set virtualedit=all
 
-" Bells
+" Remap the Esc command
+inoremap kj <Esc>
+inoremap lk <Esc>
+
+" No bells
 set errorbells
 set novisualbell
 set vb t_vb=
 
-" Remap the Esc command
-inoremap lk <Esc>
-inoremap kj <Esc>
+" Show status bar
+set laststatus=2
+
+" Load Doxygen syntax
+let g:load_doxygen_syntax=1
+
+" Highlight current line
+set cursorline
+
+" Add visible lines when start or end of the screen (3 lines)
+set scrolloff=3
+

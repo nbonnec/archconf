@@ -22,3 +22,5 @@ ls -d *.[ch] | sed 's/ut-\(.*\)/mv "&" "cu-\1"/' | sh
 remplacer dans tous les fichiers machin-custom.h par cu-machin-custom.h
 sed -i 's/\([a-z0-9-][a-z0-9-]*custom.h\)/cu-\1/g' *
 
+Firefox :
+- Animer les .gif une seule fois : animation_mode -> once
