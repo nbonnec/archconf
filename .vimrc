@@ -19,7 +19,7 @@ endif
 set nocompatible
 
 " Color
-colorscheme wombat256
+colorscheme desert
 
 " Font
 if has("gui_running")
@@ -131,7 +131,7 @@ au BufWinEnter * match Overlength /\%81v.*/
 " au BufWinEnter * let w:m2=matchadd('Tab', '\t', -1)
 highlight Space ctermbg=darkblue guibg=darkblue
 au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
-set list listchars=tab:»·,trail:·
+" set list listchars=tab:»·,trail:·
 
 " Special indentation for switch / case
 set cino=l1

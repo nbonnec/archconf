@@ -20,6 +20,10 @@
 # Environment Variables
 # #####################
 export EDITOR="vim"
+export LANG="US"
+export LC_COLLATE="C"
+export TRAVAIL="/cygdrive/c/0_Projets/"
+export UNIT="/cygdrive/c/0_Projets/tests-unitaires/env-tests"
 
 # Shell Options
 # #############
@@ -121,5 +125,5 @@ alias update='sudo pacman -Syu'
 # function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; }
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
 
