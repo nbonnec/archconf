@@ -1,0 +1,5 @@
+install bash-autocompletion
+change sudoers
+when create /media/data -> make it user
+install ttf-dejavu
+install rar zip

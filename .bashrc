@@ -107,7 +107,7 @@ alias du='du -h'
 alias grep='grep -n --color'                     # show differences in colour
 
 # Aliases
-alias ll='ls -AhlF'
+alias ll='ls -hlF'
 alias la='ls -A'
 alias lla='ls -hlA'
 alias l='ls -CF'

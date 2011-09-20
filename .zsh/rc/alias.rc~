@@ -1,0 +1,21 @@
+alias ll="ls -lah"
+alias rm="rm -i"
+alias cp="cp -i"
+alias ls="ls --color=auto"
+alias l="ls -ahi"
+alias cl="clear"
+
+alias cvs="cvs -z3"
+
+alias reboot="shutdown -r now"
+
+alias update="sudo pacman -Syyu"
+
+# do a du -hs on each dir on current path
+alias lsdir="for dir in *;do;if [ -d \$dir ];then;du -hsL \$dir;fi;done"
+
+if [ -x /usr/libexec/mc/mc-wrapper.sh ]
+then
+	alias mc='. /usr/libexec/mc/mc-wrapper.sh'
+fi
+

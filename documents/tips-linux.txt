@@ -12,3 +12,15 @@ aMule :
 Matrix effect:
 tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR="1;32" grep --color "[^ ]"
 
+Cups et impression :
+se mettre dans le group sys.
+
+Commandes sed :
+remplacer ut-machin par cu-machin
+ls -d *.[ch] | sed 's/ut-\(.*\)/mv "&" "cu-\1"/' | sh
+
+remplacer dans tous les fichiers machin-custom.h par cu-machin-custom.h
+sed -i 's/\([a-z0-9-][a-z0-9-]*custom.h\)/cu-\1/g' *
+
+Firefox :
+- Animer les .gif une seule fois : animation_mode -> once
