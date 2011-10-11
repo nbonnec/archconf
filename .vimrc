@@ -11,7 +11,7 @@
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
-  finish
+	finish
 endif
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -22,7 +22,13 @@ set nocompatible
 " colorscheme wombat
 
 " Font
-set guifont=Courier_New:h11:cANSI:
+if has("gui_running")
+	if has("gui_gtk2")
+		:set guifont=Liberation\ mono\ 12
+	elseif has("gui_win32")
+		:set guifont=Courier_New:h11:cANSI:
+	endif
+endif
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
