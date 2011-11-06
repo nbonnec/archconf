@@ -31,6 +31,11 @@ bindkey '\eOF' end-of-line
 # Activation
 compinit
 
+# History
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
+
 # Resource files
 for file in $HOME/.zsh/rc/*.rc; do
 	source $file

@@ -5,3 +5,6 @@ setopt NOBEEP
 setopt AUTOLIST
 setopt AUTOCD
 setopt PRINT_EIGHT_BIT
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+
