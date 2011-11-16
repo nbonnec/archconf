@@ -19,7 +19,7 @@ endif
 set nocompatible
 
 " Color
-" colorscheme wombat
+colorscheme wombat
 
 " Font
 if has("gui_running")
@@ -127,11 +127,11 @@ highlight Overlength ctermbg=red ctermfg=white guibg=#592929
 au BufWinEnter * match Overlength /\%81v.*/
 
 " Highlight Tabs and Spaces
-highlight Tab ctermbg=darkgray guibg=darkgray
-au BufWinEnter * let w:m2=matchadd('Tab', '/[^\t]\zs\t\+/', -1)
+" highlight Tab ctermbg=darkgray guibg=darkgray
+" au BufWinEnter * let w:m2=matchadd('Tab', '/[^\t]\zs\t\+/', -1)
 highlight Space ctermbg=darkblue guibg=darkblue
 au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
-set list listchars=tab:»·,trail:·
+set list listchars=tab:\ \ ,trail:·
 
 " Matches are memory greedy, shut them when the window is left
 autocmd BufWinLeave * call clearmatches()
@@ -147,11 +147,6 @@ set virtualedit=all
 " Remap the Esc command
 inoremap kj <Esc>
 inoremap lk <Esc>
-
-" Special completion cmds.
-inoremap ^F ^X^F
-inoremap ^D ^X^D
-inoremap ^L ^X^L
 
 " No bells
 set errorbells
@@ -176,8 +171,20 @@ set nobackup
 " No preview in ins-completion.
 set completeopt=menu
 
-" change the mapleader from \ to ,
-let mapleader=","
+" Commands completion on status line.
+set wildmenu
+
+"Don't redraw while executing macros
+set nolazyredraw
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
 " omnicompletion : words
 inoremap <leader>, <C-x><C-o>
+
+" ctags with F2.
+nnoremap <F2> :!ctags -R<CR>
+
