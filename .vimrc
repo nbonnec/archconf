@@ -11,7 +11,7 @@
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
-  finish
+	finish
 endif
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -19,24 +19,28 @@ endif
 set nocompatible
 
 " Color
+<<<<<<< HEAD
 colorscheme desert
+=======
+colorscheme wombat
+>>>>>>> 1ebb9603fc8c80c548f0ce8ea15eb88394037b7a
 
 " Font
 if has("gui_running")
-    if has("gui_gtk2")
-        :set guifont=Liberation\ mono\ 12
-    elseif has("gui_win32")
-        :set guifont=Courier_New:h11:cANSI:
-    endif
+	if has("gui_gtk2")
+		:set guifont=Liberation\ mono\ 12
+	elseif has("gui_win32")
+		:set guifont=Courier_New:h11:cANSI:
+	endif
 endif
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup " do not keep a backup file, use versions instead
+	set nobackup " do not keep a backup file, use versions instead
 else
-  set backup " keep a backup file
+	set backup " keep a backup file
 endif
 set history=50 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
@@ -55,47 +59,47 @@ inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+	set mouse=a
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
+	syntax on
+	set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+	" Enable file type detection.
+	" Use the default filetype settings, so that mail gets 'tw' set to 72,
+	" 'cindent' is on in C files, etc.
+	" Also load indent files, to automatically do language-dependent indenting.
+	filetype plugin indent on
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
+	" Put these in an autocmd group, so that we can delete them easily.
+	augroup vimrcEx
+		au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+		" For all text files set 'textwidth' to 78 characters.
+		autocmd FileType text setlocal textwidth=78
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+		" When editing a file, always jump to the last known cursor position.
+		" Don't do it when the position is invalid or when inside an event handler
+		" (happens when dropping a file on gvim).
+		" Also don't do it when the mark is in the first line, that is the default
+		" position when opening a file.
+		autocmd BufReadPost *
+					\ if line("'\"") > 1 && line("'\"") <= line("$") |
+					\   exe "normal! g`\"" |
+					\ endif
 
-  augroup END
+	augroup END
 
 else
 
-  set autoindent " always set autoindenting on
+	set autoindent " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -103,8 +107,8 @@ endif " has("autocmd")
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
- \ | wincmd p | diffthis
+	command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+				\ | wincmd p | diffthis
 endif
 " Raccourcis pour se déplacer entre les onglets.
 " Alt-j pour déplacer l'onglet vers la gauche
@@ -117,8 +121,8 @@ set nu
 
 " Tabulation of 4 spaces
 set noexpandtab
+set smarttab
 set shiftwidth=4
-set softtabstop=4
 set tabstop=4
 
 " Show when a line exceeds 80 chars
@@ -128,10 +132,17 @@ au BufWinEnter * match Overlength /\%81v.*/
 
 " Highlight Tabs and Spaces
 " highlight Tab ctermbg=darkgray guibg=darkgray
-" au BufWinEnter * let w:m2=matchadd('Tab', '\t', -1)
+" au BufWinEnter * let w:m2=matchadd('Tab', '/[^\t]\zs\t\+/', -1)
 highlight Space ctermbg=darkblue guibg=darkblue
 au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
+<<<<<<< HEAD
 " set list listchars=tab:»·,trail:·
+=======
+set list listchars=tab:\ \ ,trail:·
+
+" Matches are memory greedy, shut them when the window is left
+autocmd BufWinLeave * call clearmatches()
+>>>>>>> 1ebb9603fc8c80c548f0ce8ea15eb88394037b7a
 
 " Special indentation for switch / case
 set cino=l1
@@ -161,4 +172,27 @@ set cursorline
 
 " Add visible lines when start or end of the screen (3 lines)
 set scrolloff=3
+
+" Backup
+set nobackup
+
+" No preview in ins-completion.
+set completeopt=menu
+
+" Commands completion on status line.
+set wildmenu
+
+"Don't redraw while executing macros
+set nolazyredraw
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" omnicompletion : words
+inoremap <leader>, <C-x><C-o>
+
+" ctags with F2.
+nnoremap <F2> :!ctags -R<CR>
 
