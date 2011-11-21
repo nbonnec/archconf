@@ -22,11 +22,7 @@
 export EDITOR="vim"
 export LANG="US"
 export LC_COLLATE="C"
-<<<<<<< HEAD
-export TRAVAIL="/cygdrive/c/0_Projets/"
-=======
 export PROJ="/cygdrive/c/0_Projets/"
->>>>>>> 1ebb9603fc8c80c548f0ce8ea15eb88394037b7a
 export UNIT="/cygdrive/c/0_Projets/tests-unitaires/env-tests"
 
 # Shell Options
@@ -132,8 +128,6 @@ alias update='sudo pacman -Syu'
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
-<<<<<<< HEAD
-=======
 
 # Less and man colors.
 export LESS_TERMCAP_mb=$'\E[01;31m'    # debut de blink !
@@ -143,5 +137,4 @@ export LESS_TERMCAP_so=$'\E[01;44;33m' # début de la ligne d'état
 export LESS_TERMCAP_se=$'\E[0m'        # fin
 export LESS_TERMCAP_us=$'\E[01;32m'    # début de souligné
 export LESS_TERMCAP_ue=$'\E[0m'        # fin
->>>>>>> 1ebb9603fc8c80c548f0ce8ea15eb88394037b7a
 

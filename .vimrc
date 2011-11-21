@@ -18,15 +18,10 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Color
-<<<<<<< HEAD
-colorscheme desert
-=======
-colorscheme wombat
->>>>>>> 1ebb9603fc8c80c548f0ce8ea15eb88394037b7a
-
 " Font
 if has("gui_running")
+	" Color
+	colorscheme wombat
 	if has("gui_gtk2")
 		:set guifont=Liberation\ mono\ 12
 	elseif has("gui_win32")
@@ -135,14 +130,10 @@ au BufWinEnter * match Overlength /\%81v.*/
 " au BufWinEnter * let w:m2=matchadd('Tab', '/[^\t]\zs\t\+/', -1)
 highlight Space ctermbg=darkblue guibg=darkblue
 au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
-<<<<<<< HEAD
-" set list listchars=tab:»·,trail:·
-=======
-set list listchars=tab:\ \ ,trail:·
+set list listchars=tab:\ \ ,trail:.
 
 " Matches are memory greedy, shut them when the window is left
 autocmd BufWinLeave * call clearmatches()
->>>>>>> 1ebb9603fc8c80c548f0ce8ea15eb88394037b7a
 
 " Special indentation for switch / case
 set cino=l1
