@@ -1,7 +1,6 @@
-" An example for a vimrc file.
+" Vimrc file.
 "
-" Maintainer: Bram Moolenaar <Bram@vim.org>
-" Last change: 2008 Dec 17
+" Maintainer: Nicolas Bonnec
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
@@ -31,26 +30,13 @@ endif
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-if has("vms")
-	set nobackup " do not keep a backup file, use versions instead
-else
-	set backup " keep a backup file
-endif
 set history=50 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
 set incsearch " do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
+let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -105,19 +91,51 @@ if !exists(":DiffOrig")
 	command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 				\ | wincmd p | diffthis
 endif
-" Raccourcis pour se déplacer entre les onglets.
-" Alt-j pour déplacer l'onglet vers la gauche
-noremap <A-h> gT
-" Alt-k pour déplacer l'onglet vers la droite
-noremap <A-l> gt
+
+" Allow editing everywhere
+set virtualedit=all
+
+" No bells
+set errorbells
+set novisualbell
+set vb t_vb=
+
+" Show status bar
+set laststatus=2
+
+" Highlight current line
+set cursorline
+
+" Add visible lines when start or end of the screen (3 lines)
+set scrolloff=3
+
+" Backup
+set nobackup
+
+" No preview in ins-completion.
+set completeopt=menu
+
+" Commands completion on status line.
+set wildmenu
+
+" Don't redraw while executing macros
+set nolazyredraw
+
+" K = :help
+set keywordprg=
+
+"""""""""""""""""
+" Developpement "
+"""""""""""""""""
 
 " Line numbers
 set nu
 
 " Tabulation of 4 spaces
-set noexpandtab
+set expandtab
 set smarttab
 set shiftwidth=4
+set softtabstop=4
 set tabstop=4
 
 " Show when a line exceeds 80 chars
@@ -140,46 +158,32 @@ set cino=l1
 " Indentation when in unclosed (.
 set cino=(0
 
-" Allow editing everywhere
-set virtualedit=all
-
-" Remap the Esc command
-inoremap kj <Esc>
-inoremap lk <Esc>
-
-" No bells
-set errorbells
-set novisualbell
-set vb t_vb=
-
-" Show status bar
-set laststatus=2
-
 " Load Doxygen syntax
 let g:load_doxygen_syntax=1
 
-" Highlight current line
-set cursorline
+"""""""""""""
+"  Mapping  "
+"""""""""""""
 
-" Add visible lines when start or end of the screen (3 lines)
-set scrolloff=3
+" Don't use Ex mode, use Q for formatting
+map Q gq
 
-" Backup
-set nobackup
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
 
-" No preview in ins-completion.
-set completeopt=menu
-
-" Commands completion on status line.
-set wildmenu
-
-"Don't redraw while executing macros
-set nolazyredraw
+" Switch tab.
+noremap <A-h> gT
+noremap <A-l> gt
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+
+" Remap the Esc command
+inoremap kj <Esc>
+inoremap lk <Esc>
 
 " omnicompletion : words
 inoremap <leader>, <C-x><C-o>

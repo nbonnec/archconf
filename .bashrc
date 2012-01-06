@@ -20,10 +20,8 @@
 # Environment Variables
 # #####################
 export EDITOR="vim"
-export LANG="US"
-export LC_COLLATE="C"
-export PROJ="/cygdrive/c/0_Projets/"
-export UNIT="/cygdrive/c/0_Projets/tests-unitaires/env-tests"
+export DISPLAY=:0.0
+export TRAVAIL="/cygdrive/c/Travail"
 
 # Shell Options
 # #############
