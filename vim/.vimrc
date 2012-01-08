@@ -161,6 +161,9 @@ set cino=(0
 " Load Doxygen syntax
 let g:load_doxygen_syntax=1
 
+" Taglist
+let Tlist_Use_Right_Window=1
+
 """""""""""""
 "  Mapping  "
 """""""""""""
@@ -190,4 +193,10 @@ inoremap <leader>, <C-x><C-o>
 
 " ctags with F2.
 nnoremap <F2> :!ctags -R<CR>
+
+" Taglist with F3
+nnoremap <F3> :Tlist<CR>
+
+" F4
+nnoremap <F4> :20Vexplore<CR>
 

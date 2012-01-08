@@ -2,7 +2,7 @@ alias ll="ls -lah"
 alias rm="rm -i"
 alias cp="cp -i"
 alias ls="ls --color=auto"
-alias l="ls -ah"
+alias l="ls -CF"
 alias cl="clear"
 
 alias cvs="cvs -z3"

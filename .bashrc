@@ -110,7 +110,7 @@ alias grep='grep -n --color'                     # show differences in colour
 alias ll='ls -hlF'
 alias la='ls -A'
 alias lla='ls -hlA'
-alias l='ls -CF'
+alias l='ls -CAF'
 alias ls='ls --color=auto'
 
 #other aliases
