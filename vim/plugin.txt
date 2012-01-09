@@ -1,0 +1,3 @@
+wombat.vim
+snippets
+taglist
