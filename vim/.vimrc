@@ -24,7 +24,7 @@ if has("gui_running")
 	if has("gui_gtk2")
 		:set guifont=Liberation\ mono\ 12
 	elseif has("gui_win32")
-		:set guifont=Courier_New:h11:cANSI:
+		:set guifont=DejaVu_Sans_Mono:h11:cANSI:
 	endif
 endif
 
@@ -139,7 +139,6 @@ set softtabstop=4
 set tabstop=4
 
 " Show when a line exceeds 80 chars
-" au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
 highlight Overlength ctermbg=red ctermfg=white guibg=#592929
 au BufWinEnter * match Overlength /\%81v.*/
 
@@ -151,6 +150,7 @@ au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
 set list listchars=tab:\ \ ,trail:.
 
 " Matches are memory greedy, shut them when the window is left
+" Mybe it is redondant.
 autocmd BufWinLeave * call clearmatches()
 
 " Special indentation for switch / case
@@ -161,8 +161,15 @@ set cino=(0
 " Load Doxygen syntax
 let g:load_doxygen_syntax=1
 
+"""""""""""""""""
 " Taglist
+"""""""""""""""""
 let Tlist_Use_Right_Window=1
+
+"""""""""""""""""
+" netrw
+"""""""""""""""""
+let g:netrw_liststyle=3
 
 """""""""""""
 "  Mapping  "
@@ -195,8 +202,8 @@ inoremap <leader>, <C-x><C-o>
 nnoremap <F2> :!ctags -R<CR>
 
 " Taglist with F3
-nnoremap <F3> :Tlist<CR>
+nnoremap <F3> :TlistToggle<CR>
 
 " F4
-nnoremap <F4> :20Vexplore<CR>
+nnoremap <F4> :26Vexplore<CR>
 
