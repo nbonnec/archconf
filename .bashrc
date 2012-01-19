@@ -81,9 +81,6 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
 # Whenever displaying the prompt, write the previous line to disk
 export PROMPT_COMMAND="history -a"
 
-# Proxy
-export http_proxy=http://so_bonni:Eol%40ne49@10.100.15.254:8080
-
 # Aliases
 # #######
 
@@ -108,9 +105,9 @@ alias grep='grep -n --color'                     # show differences in colour
 
 # Aliases
 alias ll='ls -hlF'
-alias la='ls -A'
-alias lla='ls -hlA'
-alias l='ls -CAF'
+alias la='ls -CAF'
+alias lla='ls -hlAF'
+alias l='ls -CF'
 alias ls='ls --color=auto'
 
 #other aliases
@@ -125,7 +122,7 @@ alias update='sudo pacman -Syu'
 # function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; }
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
+PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ "
 
 # Less and man colors.
 export LESS_TERMCAP_mb=$'\E[01;31m'    # debut de blink !
