@@ -1,0 +1,15 @@
+# k&r style
+--style=kr
+# add blank line before if, switch ...
+--break-blocks
+# spaces around operation in if ...
+--pad-oper
+# spaces before if, switch ...
+--pad-header
+# delete unwanted spaces
+--unpad-paren
+# no indentatin in condition
+--min-conditional-indent=0
+# ...
+--indent-switches
+
