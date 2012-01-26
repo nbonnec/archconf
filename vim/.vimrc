@@ -176,6 +176,13 @@ let Tlist_Use_Right_Window=1
 """""""""""""""""
 let g:netrw_liststyle=3
 
+"""""""""""""""""
+" cscope
+"""""""""""""""""
+if has("cscope") && filereadable("cscope.out")
+        cs add cscope.out
+endif
+
 """""""""""""
 "  Mapping  "
 """""""""""""
@@ -211,4 +218,5 @@ nnoremap <F3> :TlistToggle<CR>
 
 " F4
 nnoremap <F4> :26Vexplore<CR>
+
 
