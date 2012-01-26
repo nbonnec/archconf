@@ -17,15 +17,20 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Font
+" Font and color.
 if has("gui_running")
-	" Color
+    " We are in gVim
 	colorscheme wombat
+    " Linux
 	if has("gui_gtk2")
 		:set guifont=Liberation\ mono\ 12
+    " Windows
 	elseif has("gui_win32")
 		:set guifont=DejaVu_Sans_Mono:h11:cANSI:
 	endif
+else
+    " We are in a console
+    set background=dark
 endif
 
 " allow backspacing over everything in insert mode

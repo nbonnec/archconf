@@ -20,11 +20,18 @@
 # Environment Variables
 # #####################
 export EDITOR="vim"
-export DISPLAY=:0.0
-export TRAVAIL="/cygdrive/c/Travail"
 
 # Shell Options
 # #############
+# Cygwin
+if [ -n "$OS" ] && [ "$OS" = "Windows_NT" ]
+then
+    export DISPLAY=:0.0
+    export TRAVAIL="/cygdrive/c/Travail"
+    unset TMP
+    unset TEMP
+    export TEMP=/tmp
+fi
 
 # See man bash for more options...
 
@@ -102,6 +109,7 @@ alias du='du -h'
 # alias less='less -r'                          # raw control characters
 # alias whence='type -a'                        # where, of a sort
 alias grep='grep -n --color'                     # show differences in colour
+alias egrep='egrep -n --color'                     # show differences in colour
 
 # Aliases
 alias ll='ls -hlF'
@@ -121,7 +129,7 @@ alias update='sudo pacman -Syu'
 # Some example functions
 # function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; }
 
-# set a fancy prompt (non-color, unless we know we "want" color)
+# set a fancy prompt
 PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ "
 
 # Less and man colors.
