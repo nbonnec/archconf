@@ -23,7 +23,8 @@ if has("gui_running")
 	colorscheme wombat
     " Linux
 	if has("gui_gtk2")
-		:set guifont=Liberation\ mono\ 12
+		":set guifont=Liberation\ mono\ 12
+		:set guifont=DejaVu\ Sans\ Mono\ 11
     " Windows
 	elseif has("gui_win32")
 		:set guifont=DejaVu_Sans_Mono:h11:cANSI:
@@ -96,6 +97,9 @@ if !exists(":DiffOrig")
 	command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 				\ | wincmd p | diffthis
 endif
+
+" Update the path with the dir where we opened Vim
+set path+=$PWD/**
 
 " Allow editing everywhere
 set virtualedit=all
@@ -179,8 +183,19 @@ let g:netrw_liststyle=3
 """""""""""""""""
 " cscope
 """""""""""""""""
-if has("cscope") && filereadable("cscope.out")
+if has("cscope")
+    set csprg=/usr/local/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
         cs add cscope.out
+        " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
 endif
 
 """""""""""""
