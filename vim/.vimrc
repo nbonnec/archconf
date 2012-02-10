@@ -184,7 +184,6 @@ let g:netrw_liststyle=3
 " cscope
 """""""""""""""""
 if has("cscope")
-    set csprg=/usr/local/bin/cscope
     set csto=0
     set cst
     set nocsverb
@@ -233,5 +232,4 @@ nnoremap <F3> :TlistToggle<CR>
 
 " F4
 nnoremap <F4> :26Vexplore<CR>
-
 
