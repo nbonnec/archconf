@@ -85,6 +85,11 @@ snippet st
 	struct ${1:`Filename('$1_t', 'name')`} {
 		${2:/* data */}
 	}${3: /* optional variable list */};${4}
+# Enum
+snippet en
+	enum  ${1:`Filename('$1_e', 'name')`} {
+		${2:/* data */}
+	}${3: /* optional variable list */};${4} 
 # Typedef struct
 snippet tds
 	typedef struct ${2:_$1 }{

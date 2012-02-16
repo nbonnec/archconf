@@ -31,6 +31,13 @@ then
     unset TMP
     unset TEMP
     export TEMP=/tmp
+
+    startxwin
+
+    # TEMP
+    xmodmap -e 'keycode 66 = Control_L'
+    xmodmap -e 'clear Lock'
+    xmodmap -e 'add Control = Control_L'
 fi
 
 # See man bash for more options...
@@ -108,8 +115,8 @@ alias du='du -h'
 # Misc :)
 # alias less='less -r'                          # raw control characters
 # alias whence='type -a'                        # where, of a sort
-alias grep='grep -n --color'                     # show differences in colour
-alias egrep='egrep -n --color'                     # show differences in colour
+alias grep='grep -n --color'                    # show differences in colour
+alias egrep='egrep -n --color'                  # show differences in colour
 
 # Aliases
 alias ll='ls -hlF'
@@ -122,13 +129,6 @@ alias ls='ls --color=auto'
 alias yupdate='sudo yaourt -Syu'
 alias update='sudo pacman -Syu'
 
-
-# Functions
-# #########
-
-# Some example functions
-# function settitle() { echo -ne "\e]2;$@\a\e]1;$@\a"; }
-
 # set a fancy prompt
 PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ "
 
@@ -140,4 +140,10 @@ export LESS_TERMCAP_so=$'\E[01;44;33m' # début de la ligne d'état
 export LESS_TERMCAP_se=$'\E[0m'        # fin
 export LESS_TERMCAP_us=$'\E[01;32m'    # début de souligné
 export LESS_TERMCAP_ue=$'\E[0m'        # fin
+
+# Function to retrieve a word in c files and headers
+grepc ()
+{
+    find . -name "*.[ch]" | xargs grep -n --color $1
+}
 

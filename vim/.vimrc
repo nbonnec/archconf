@@ -99,7 +99,7 @@ if !exists(":DiffOrig")
 endif
 
 " Update the path with the dir where we opened Vim
-set path+=$PWD/**
+set path=$PWD/**,.,/usr/include,/usr/local/include
 
 " Allow editing everywhere
 set virtualedit=all
@@ -194,6 +194,8 @@ if has("cscope")
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     endif
+    " abbreviations
+    cnoreabbrev csf cs find
     set csverb
 endif
 
