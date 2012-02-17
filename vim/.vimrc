@@ -97,6 +97,9 @@ if !exists(":DiffOrig")
 				\ | wincmd p | diffthis
 endif
 
+" Update the path with the dir where we opened Vim
+set path=$PWD/**,.,/usr/include,/usr/local/include
+
 " Allow editing everywhere
 set virtualedit=all
 
@@ -179,8 +182,20 @@ let g:netrw_liststyle=3
 """""""""""""""""
 " cscope
 """""""""""""""""
-if has("cscope") && filereadable("cscope.out")
+if has("cscope")
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
         cs add cscope.out
+        " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    " abbreviations
+    cnoreabbrev csf cs find
+    set csverb
 endif
 
 """""""""""""
@@ -218,5 +233,4 @@ nnoremap <F3> :TlistToggle<CR>
 
 " F4
 nnoremap <F4> :26Vexplore<CR>
-
 
