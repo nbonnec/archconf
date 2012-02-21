@@ -221,13 +221,10 @@ inoremap <leader>, <C-x><C-o>
 " Build C symbols.
 function! BuildSymbols()
     if has("cscope") && !has("gui_win32")
-        if filereadable("cscope.out")
-            execute "!ctags -R && cscope -Rb"
-            execute "cs reset"
-        else
-            execute "!ctags -R && cscope -Rb"
-            execute "cs add cscope.out"
-        endif
+        " kill all connection.
+        execute "cs kill -1"
+        execute "!ctags -R && cscope -Rb"
+        execute "cs add cscope.out"
     else
         execute "!ctags -R"
     endif
