@@ -99,7 +99,7 @@ if !exists(":DiffOrig")
 endif
 
 " Update the path with the dir where we opened Vim
-set path=$PWD/**,.,/usr/include,/usr/local/include
+set path=.,$PWD/**
 
 " Allow editing everywhere
 set virtualedit=all
@@ -176,11 +176,6 @@ let g:load_doxygen_syntax=1
 let Tlist_Use_Right_Window=1
 
 """""""""""""""""
-" netrw
-"""""""""""""""""
-let g:netrw_liststyle=3
-
-"""""""""""""""""
 " cscope
 """""""""""""""""
 if has("cscope")
@@ -227,7 +222,11 @@ inoremap lk <Esc>
 inoremap <leader>, <C-x><C-o>
 
 " ctags with F2.
-nnoremap <F2> :!ctags -R<CR>
+if has("cscope")
+    nnoremap <F2> :!ctags -R && cscope -Rb<CR>:cs reset<CR>
+else
+    nnoremap <F2> :!ctags -R<CR>
+endif
 
 " Taglist with F3
 nnoremap <F3> :TlistToggle<CR>
