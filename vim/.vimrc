@@ -178,16 +178,13 @@ let Tlist_Use_Right_Window=1
 """""""""""""""""
 " cscope
 """""""""""""""""
-if has("cscope")
+if has("cscope") && !has("gui_win32")
     set csto=0
     set cst
     set nocsverb
     " add any database in current directory
     if filereadable("cscope.out")
         cs add cscope.out
-        " else add database pointed to by environment
-    elseif $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
     endif
     " abbreviations
     cnoreabbrev csf cs find
@@ -221,16 +218,29 @@ inoremap lk <Esc>
 " omnicompletion : words
 inoremap <leader>, <C-x><C-o>
 
-" ctags with F2.
-if has("cscope")
-    nnoremap <F2> :!ctags -R && cscope -Rb<CR>:cs reset<CR>
-else
-    nnoremap <F2> :!ctags -R<CR>
-endif
+" Build C symbols.
+function! BuildSymbols()
+    if has("cscope") && !has("gui_win32")
+        if filereadable("cscope.out")
+            execute "!ctags -R && cscope -Rb"
+            execute "cs reset"
+        else
+            execute "!ctags -R && cscope -Rb"
+            execute "cs add cscope.out"
+        endif
+    else
+        execute "!ctags -R"
+    endif
+endfunction
+
+" Build symbols with F2.
+nnoremap <F2> :call BuildSymbols()<CR>
 
 " Taglist with F3
 nnoremap <F3> :TlistToggle<CR>
 
 " F4
 nnoremap <F4> :26Vexplore<CR>
+
+
 
