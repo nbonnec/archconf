@@ -10,6 +10,7 @@ alias cvs="cvs -z3"
 alias reboot="shutdown -r now"
 
 alias update="sudo pacman -Syyu"
+alias yupdate="sudo yaourt -Syyu"
 
 # do a du -hs on each dir on current path
 alias lsdir="for dir in *;do;if [ -d \$dir ];then;du -hsL \$dir;fi;done"

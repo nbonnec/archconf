@@ -23,7 +23,6 @@ if has("gui_running")
 	colorscheme wombat
     " Linux
 	if has("gui_gtk2")
-		":set guifont=Liberation\ mono\ 12
 		:set guifont=DejaVu\ Sans\ Mono\ 11
     " Windows
 	elseif has("gui_win32")

@@ -1,6 +1,6 @@
-# 
+#
 # This file is based on the configuration written by
-# Bruno Bonfils, <asyd@debian-fr.org> 
+# Bruno Bonfils, <asyd@debian-fr.org>
 # Written since summer 2001
 
 #
