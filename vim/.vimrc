@@ -99,6 +99,10 @@ endif
 
 " Update the path with the dir where we opened Vim
 set path=.,$PWD/**
+" Now that we set the path to be recursive, disable
+" the option that looking for completion in included files.
+" Indeed, it can slow the process hard. We use tags instead.
+set complete-=i
 
 " Allow editing everywhere
 set virtualedit=all
@@ -235,7 +239,7 @@ nnoremap <F2> :call BuildSymbols()<CR>
 " Taglist with F3
 nnoremap <F3> :TlistToggle<CR>
 
-" F4
+" Open a explorer on a vertical split of 26.
 nnoremap <F4> :26Vexplore<CR>
 
 
