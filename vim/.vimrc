@@ -223,7 +223,7 @@ inoremap <leader>, <C-x><C-o>
 
 " Build C symbols.
 function! BuildSymbols()
-    if has("cscope") && !has("gui_win32")
+    if has("cscope") && filereadable("/usr/bin/cscope") && !has("gui_win32")
         " kill all connection.
         execute "cs kill -1"
         execute "!ctags -R && cscope -Rb"
