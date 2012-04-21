@@ -17,10 +17,9 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Font and color.
+" Font and background.
 if has("gui_running")
     " We are in gVim
-	colorscheme wombat
     " Linux
 	if has("gui_gtk2")
 		:set guifont=DejaVu\ Sans\ Mono\ 11
@@ -31,6 +30,13 @@ if has("gui_running")
 else
     " We are in a console
     set background=dark
+endif
+
+" Manage colors.
+if filereadable("/usr/share/vim/vim72/colors/wombat.vim")
+    colorscheme wombat
+else
+    colorscheme desert
 endif
 
 " allow backspacing over everything in insert mode
