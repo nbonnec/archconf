@@ -1,0 +1,13 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[user]
+	name = nico
+	mail = the.vegeta@gmail.com
+	email = the.vegeta@gmail.com
+[alias]
+        ci = commit
+        co = checkout
+        st = status
+        br = branch
