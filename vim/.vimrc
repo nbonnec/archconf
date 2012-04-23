@@ -33,7 +33,7 @@ else
 endif
 
 " Manage colors.
-if filereadable("/usr/share/vim/vim72/colors/wombat.vim")
+if filereadable($VIMRUNTIME . "/colors/wombat.vim")
     colorscheme wombat
 else
     colorscheme desert
@@ -250,6 +250,4 @@ nnoremap <F3> :TlistToggle<CR>
 
 " Open a explorer on a vertical split of 26.
 nnoremap <F4> :26Vexplore<CR>
-
-
 
