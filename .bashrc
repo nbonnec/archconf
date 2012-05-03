@@ -32,9 +32,7 @@ then
     unset TEMP
     export TEMP=/tmp
 
-    startxwin
-
-    # TEMP
+    # Make capslock a control key.
     xmodmap -e 'keycode 66 = Control_L'
     xmodmap -e 'clear Lock'
     xmodmap -e 'add Control = Control_L'
@@ -75,9 +73,9 @@ shopt -s cdspell
 
 # If this shell is interactive, turn on programmable completion enhancements.
 # Any completions you add in ~/.bash_completion are sourced last.
- case $- in
-   *i*) [[ -f /etc/bash_completion ]] && . /etc/bash_completion ;;
- esac
+case $- in
+  *i*) [[ -f /etc/bash_completion ]] && . /etc/bash_completion ;;
+esac
 
 
 # History Options
