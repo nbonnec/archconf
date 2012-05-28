@@ -33,7 +33,8 @@ else
 endif
 
 " Manage colors.
-if filereadable($VIMRUNTIME . "/colors/wombat.vim")
+if filereadable($VIMRUNTIME . "/colors/wombat.vim") ||
+            \ filereadable($VIM . "/vimfiles/colors/wombat.vim")
     colorscheme wombat
 else
     colorscheme desert
