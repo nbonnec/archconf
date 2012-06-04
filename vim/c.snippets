@@ -30,7 +30,7 @@ snippet #if
 # (the randomizer code is taken directly from TextMate; it could probably be
 # cleaner, I don't know how to do it in vim script)
 snippet once
-	#ifndef ${1:`toupper(Filename('', 'UNTITLED').'_H')`}
+	#ifndef ${1:`toupper(system("echo -n ".shellescape(Filename('', 'UNTITLED'))."| sed 's/-/_/g'").'_H')`}
 	#define $1
 
 	${2}
