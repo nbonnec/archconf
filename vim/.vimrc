@@ -232,7 +232,7 @@ inoremap <leader>, <C-x><C-o>
 
 " Build C symbols.
 function! BuildSymbols()
-    if has("cscope") && filereadable("/usr/bin/cscope") && !has("gui_win32")
+    if has("cscope") && executable("cscope") && !has("gui_win32")
         " kill all connection.
         execute "cs kill -1"
         execute "!ctags -R && cscope -Rb"
@@ -250,4 +250,7 @@ nnoremap <F3> :TlistToggle<CR>
 
 " Open a explorer on a vertical split of 26.
 nnoremap <F4> :26Vexplore<CR>
+
+" When you forgot to open the file as sudo.
+cmap w!! %!sudo tee > /dev/null %
 
