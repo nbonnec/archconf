@@ -44,9 +44,11 @@ endif
 
 " Manage colors.
 if filereadable($VIMRUNTIME . "/colors/wombat256.vim") ||
+            \ filereadable($VIM . "/vimfiles/colors/wombat256.vim") ||
             \ filereadable($HOME . "/.vim/colors/wombat256.vim")
     colorscheme wombat256
 elseif filereadable($VIMRUNTIME . "/colors/wombat.vim") ||
+            \ filereadable($VIM . "/vimfiles/colors/wombat.vim") ||
             \ filereadable($HOME . "/.vim/colors/wombat.vim")
     colorscheme wombat
 else
