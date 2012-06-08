@@ -17,7 +17,7 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" Font and background.
+" Management of console or GUI settings.
 if has("gui_running")
     " We are in gVim
     " Linux
@@ -30,11 +30,24 @@ if has("gui_running")
 else
     " We are in a console
     set background=dark
+    " Cursor shape.
+    " Should work with xterm compatible console.
+    " Not compatible with GNU Screen.
+    " TODO : verify !
+    if match($TERM, "xterm") != -1
+        let &t_ti.="\e[1 q"
+        let &t_SI.="\e[5 q"
+        let &t_EI.="\e[1 q"
+        let &t_te.="\e[0 q"
+    endif
 endif
 
 " Manage colors.
-if filereadable($VIMRUNTIME . "/colors/wombat.vim") ||
-            \ filereadable($VIM . "/vimfiles/colors/wombat.vim")
+if filereadable($VIMRUNTIME . "/colors/wombat256.vim") ||
+            \ filereadable($HOME . "/.vim/colors/wombat256.vim")
+    colorscheme wombat256
+elseif filereadable($VIMRUNTIME . "/colors/wombat.vim") ||
+            \ filereadable($HOME . "/.vim/colors/wombat.vim")
     colorscheme wombat
 else
     colorscheme desert
@@ -233,7 +246,7 @@ inoremap <leader>, <C-x><C-o>
 
 " Build C symbols.
 function! BuildSymbols()
-    if has("cscope") && filereadable("/usr/bin/cscope") && !has("gui_win32")
+    if has("cscope") && executable("cscope") && !has("gui_win32")
         " kill all connection.
         execute "cs kill -1"
         execute "!ctags -R && cscope -Rb"
@@ -251,4 +264,7 @@ nnoremap <F3> :TlistToggle<CR>
 
 " Open a explorer on a vertical split of 26.
 nnoremap <F4> :26Vexplore<CR>
+
+" When you forgot to open the file as sudo.
+cmap w!! %!sudo tee > /dev/null %
 

@@ -19,11 +19,11 @@ vbell_msg "   Wuff  ----  Wuff!!  "
 # all termcap entries are now duplicated as terminfo entries.
 # only difference should be the slightly modified syntax, and check for
 # terminfo entries, that are already corected in the database.
-# 
-# G0 	we have a SEMI-GRAPHICS-CHARACTER-MODE
-# WS	this sequence resizes our window.
+#
+# G0    we have a SEMI-GRAPHICS-CHARACTER-MODE
+# WS    this sequence resizes our window.
 # cs    this sequence changes the scrollregion
-# hs@	we have no hardware statusline. screen will only believe that
+# hs@   we have no hardware statusline. screen will only believe that
 #       there is a hardware status line if hs,ts,fs,ds are all set.
 # ts    to statusline
 # fs    from statusline
@@ -102,4 +102,18 @@ hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u
 termcapinfo xterm* ti@:te@
 
 defscrollback 5000
+
+# 256 colors
+term screen-256color
+
+startup_message off
+
+escape ^Qq
+
+# At startup
+screen -t home      0
+chdir /cygdrive/c/Travail/
+screen -t project   1
+screen -t compile   2   ssh nbonnec@frbon-ws0001
+chdir
 
