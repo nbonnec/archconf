@@ -128,7 +128,12 @@ alias yupdate='sudo yaourt -Syu'
 alias update='sudo pacman -Syu'
 
 # set a fancy prompt
-PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ "
+if [ -n "$SSH_CLIENT" ] ; then
+    PS1="\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ "
+else
+    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ "
+fi
+
 
 # Less and man colors.
 export LESS_TERMCAP_mb=$'\E[01;31m'    # debut de blink !
