@@ -228,17 +228,20 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" After repeating command, return where we were.
+map . .`[
+
 " Switch tab.
 noremap <A-h> gT
 noremap <A-l> gt
 " For dummy terminals
 noremap <Esc>h gT
 noremap <Esc>l gt
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " Remap the Esc command
 inoremap kj <Esc>
