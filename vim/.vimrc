@@ -221,6 +221,9 @@ inoremap <C-U> <C-G>u<C-U>
 " Switch tab.
 noremap <A-h> gT
 noremap <A-l> gt
+" For dummy terminals
+noremap <Esc>h gT
+noremap <Esc>l gt
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
