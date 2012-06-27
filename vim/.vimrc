@@ -30,16 +30,6 @@ if has("gui_running")
 else
     " We are in a console
     set background=dark
-    " Cursor shape.
-    " Should work with xterm compatible console.
-    " Not compatible with GNU Screen.
-    " TODO : verify !
-    if match($TERM, "xterm") != -1
-        let &t_ti.="\e[1 q"
-        let &t_SI.="\e[5 q"
-        let &t_EI.="\e[1 q"
-        let &t_te.="\e[0 q"
-    endif
 endif
 
 " Manage colors.
