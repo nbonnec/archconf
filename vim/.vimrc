@@ -30,16 +30,6 @@ if has("gui_running")
 else
     " We are in a console
     set background=dark
-    " Cursor shape.
-    " Should work with xterm compatible console.
-    " Not compatible with GNU Screen.
-    " TODO : verify !
-    if match($TERM, "xterm") != -1
-        let &t_ti.="\e[1 q"
-        let &t_SI.="\e[5 q"
-        let &t_EI.="\e[1 q"
-        let &t_te.="\e[0 q"
-    endif
 endif
 
 " Manage colors.
@@ -233,6 +223,9 @@ inoremap <C-U> <C-G>u<C-U>
 " Switch tab.
 noremap <A-h> gT
 noremap <A-l> gt
+" For dummy terminals
+noremap <Esc>h gT
+noremap <Esc>l gt
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
