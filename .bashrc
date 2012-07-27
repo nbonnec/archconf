@@ -126,6 +126,7 @@ alias ls='ls --color=auto'
 #other aliases
 alias yupdate='sudo yaourt -Syu'
 alias update='sudo pacman -Syu'
+alias givm='gvim'
 
 # set a fancy prompt
 if [ -n "$SSH_CLIENT" ] ; then
