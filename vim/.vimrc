@@ -149,6 +149,10 @@ set keywordprg=
 " Diff always vertical
 set diffopt=vertical
 
+" Use utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+
 """""""""""""""""
 " Developpement "
 """""""""""""""""
