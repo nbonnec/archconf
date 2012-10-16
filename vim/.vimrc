@@ -141,7 +141,7 @@ set completeopt=menu
 set wildmenu
 
 " Don't redraw while executing macros
-set nolazyredraw
+set lazyredraw
 
 " K = :help
 set keywordprg=
@@ -198,7 +198,7 @@ let Tlist_Use_Right_Window=1
 """""""""""""""""
 " cscope
 """""""""""""""""
-if has("cscope") && !has("gui_win32")
+if has("cscope") && executable("cscope") && !has("gui_win32")
     set csto=0
     set cst
     set nocsverb

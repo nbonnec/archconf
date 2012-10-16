@@ -27,6 +27,7 @@ bindkey "\e[2~" overwrite-mode          # Ins
 bindkey "\e[3~" delete-char             # Delete
 bindkey '\eOH' beginning-of-line
 bindkey '\eOF' end-of-line
+bindkey -e
 
 # Activation
 compinit
