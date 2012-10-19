@@ -140,9 +140,15 @@ export LESS_TERMCAP_se=$'\E[0m'        # fin
 export LESS_TERMCAP_us=$'\E[01;32m'    # début de souligné
 export LESS_TERMCAP_ue=$'\E[0m'        # fin
 
-# Function to retrieve a word in c files and headers
-grepc ()
+# Function to retrieve a word in c files and headers.
+grepc()
 {
     find . -name "*.[ch]" | xargs grep -n --color $1
+}
+
+# Get the history on a SVN repo for a user.
+svn_hist()
+{
+    svn log -v $2 | sed -n '/| '$1' |/,/-----$/ p'
 }
 

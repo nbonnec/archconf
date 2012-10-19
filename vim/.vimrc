@@ -183,9 +183,8 @@ set list listchars=tab:\ \ ,trail:.
 autocmd BufWinLeave * call clearmatches()
 
 " Special indentation for switch / case
-set cino=l1
 " Indentation when in unclosed (.
-set cino=(0
+set cino=l1,(0
 
 " Load Doxygen syntax
 let g:load_doxygen_syntax=1

@@ -1,10 +1,9 @@
-WiFi :
-- Il peut y avoir des problèmes de connexion à cause des canaux.
-Installer crda pour gérer la politique de ces canaux.
 
-- Dans CUPS : penser à mettre le user dans les administrateurs
-
-- Pour trouver dans quel paquet est un binaire : pkgfile
+Archlinux:
+- WiFi :
+    - il peut y avoir des problèmes de connexion à cause des canaux.
+    - installer crda pour gérer la politique de ces canaux.
+    - pour trouver dans quel paquet est un binaire : pkgfile
 
 aMule :
 - dans firefox : network.protocol-handler.external.ed2k = true
@@ -13,14 +12,19 @@ Matrix effect:
 tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR="1;32" grep --color "[^ ]"
 
 Cups et impression :
-se mettre dans le group sys.
+se mettre dans le group sys et admin.
 
-Commandes sed :
-remplacer ut-machin par cu-machin
-ls -d *.[ch] | sed 's/ut-\(.*\)/mv "&" "cu-\1"/' | sh
+Sed :
+    - remplacer ut-machin par cu-machin
+        ls -d *.[ch] | sed 's/ut-\(.*\)/mv "&" "cu-\1"/' | sh
 
-remplacer dans tous les fichiers machin-custom.h par cu-machin-custom.h
-sed -i 's/\([a-z0-9-][a-z0-9-]*custom.h\)/cu-\1/g' *
+    - remplacer dans tous les fichiers machin-custom.h par cu-machin-custom.h
+        sed -i 's/\([a-z0-9-][a-z0-9-]*custom.h\)/cu-\1/g' *
 
 Firefox :
 - Animer les .gif une seule fois : animation_mode -> once
+
+SVN :
+- récupérer son historique sur un repos.
+    svn log https://gaston/svn | sed -n '/| nbonnec |/,/-----$/ p' > log
+
