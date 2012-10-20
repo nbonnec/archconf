@@ -31,11 +31,6 @@ then
     unset TMP
     unset TEMP
     export TEMP=/tmp
-
-    # Make capslock a control key.
-    xmodmap -e 'keycode 66 = Control_L'
-    xmodmap -e 'clear Lock'
-    xmodmap -e 'add Control = Control_L'
 fi
 
 # See man bash for more options...
@@ -88,7 +83,7 @@ export HISTCONTROL="ignoredups"
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
 # export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
-export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
+export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls:l:ll:lla' # Ignore the ls command as well
 
 # Whenever displaying the prompt, write the previous line to disk
 export PROMPT_COMMAND="history -a"
@@ -126,12 +121,13 @@ alias ls='ls --color=auto'
 #other aliases
 alias yupdate='sudo yaourt -Syu'
 alias update='sudo pacman -Syu'
+alias givm='gvim'
 
 # set a fancy prompt
 if [ -n "$SSH_CLIENT" ] ; then
-    PS1="\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ "
+    PS1="\[\e[01;31m\]\u@\h \[\e[01;34m\]\w\[\e[00m\]\n\$ "
 else
-    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\n\$ "
+    PS1="\[\e[01;32m\]\u@\h \[\e[01;34m\]\w\[\e[00m\]\n\$ "
 fi
 
 

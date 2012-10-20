@@ -143,13 +143,17 @@ set completeopt=menu
 set wildmenu
 
 " Don't redraw while executing macros
-set nolazyredraw
+set lazyredraw
 
 " K = :help
 set keywordprg=
 
 " Diff always vertical
 set diffopt=vertical
+
+" Use utf-8
+set encoding=utf-8
+set fileencoding=utf-8
 
 """""""""""""""""
 " Developpement "
@@ -196,7 +200,7 @@ let Tlist_Use_Right_Window=1
 """""""""""""""""
 " cscope
 """""""""""""""""
-if has("cscope") && !has("gui_win32")
+if has("cscope") && executable("cscope") && !has("gui_win32")
     set csto=0
     set cst
     set nocsverb
@@ -220,17 +224,20 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
+" After repeating command, return where we were.
+map . .`[
+
 " Switch tab.
 noremap <A-h> gT
 noremap <A-l> gt
 " For dummy terminals
 noremap <Esc>h gT
 noremap <Esc>l gt
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " Remap the Esc command
 inoremap kj <Esc>

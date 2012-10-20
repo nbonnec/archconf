@@ -114,6 +114,5 @@ escape ^Qq
 screen -t home      0
 chdir /cygdrive/c/Travail/
 screen -t project   1
-screen -t compile   2   ssh nbonnec@frbon-ws0001
 chdir
 
