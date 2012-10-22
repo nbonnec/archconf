@@ -153,6 +153,9 @@ set diffopt=vertical
 set encoding=utf-8
 set fileencoding=utf-8
 
+" Remember buffer changes when jumping around.
+set hidden
+
 """""""""""""""""
 " Developpement "
 """""""""""""""""
@@ -240,8 +243,20 @@ noremap <Esc>l gt
 inoremap kj <Esc>
 inoremap lk <Esc>
 
+" Better for wrapped lines
+nnoremap j gj
+nnoremap k gk
+
 " omnicompletion : words
 inoremap <leader>, <C-x><C-o>
+
+" Turn off highlighting in search.
+nmap <leader>/ :nohlsearch<CR>
+
+" edit .vimrc
+nmap <silent> <leader>ev :tabnew $HOME/.vimrc<CR>
+" source .vimrc
+nmap <silent> <leader>sv :so $HOME/.vimrc<CR>
 
 " Build C symbols.
 function! BuildSymbols()
