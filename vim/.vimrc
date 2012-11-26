@@ -272,6 +272,20 @@ function! BuildSymbols()
     endif
 endfunction
 
+"run Vim diff on HEAD copy in SVN.
+nnoremap <silent><leader>dh :call SVNDiff()<CR>
+function! SVNDiff()
+    let fn = bufname("%")
+    let newfn = fn .  ".HEAD"
+    let catstat = system("svn cat " . fn . " > " . newfn)
+    if catstat == 0
+        execute 'vert diffsplit ' . newfn
+        execute 'set filetype=c'
+    else
+        echo "*** ERROR: svn cat failed for ". fn . " (as " . newfn . ")"
+    endif
+endfunction
+
 " Build symbols with F2.
 nnoremap <F2> :call BuildSymbols()<CR>
 

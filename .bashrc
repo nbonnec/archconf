@@ -72,6 +72,8 @@ case $- in
   *i*) [[ -f /etc/bash_completion ]] && . /etc/bash_completion ;;
 esac
 
+# Avoid the break of completion on variables using cd.
+complete -r cd
 
 # History Options
 # ###############
@@ -147,6 +149,8 @@ grepc()
 }
 
 # Get the history on a SVN repo for a user.
+# $1 the user,
+# $2 the repo.
 svn_hist()
 {
     svn log -v $2 | sed -n '/| '$1' |/,/-----$/ p'
