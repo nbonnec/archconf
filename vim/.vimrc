@@ -32,26 +32,6 @@ else
     set background=dark
 endif
 
-" Manage colors.
-if filereadable($VIMRUNTIME . "/colors/wombat256.vim") ||
-            \ filereadable($VIM . "/vimfiles/colors/wombat256.vim") ||
-            \ filereadable($HOME . "/.vim/colors/wombat256.vim")
-    colorscheme wombat256
-elseif filereadable($VIMRUNTIME . "/colors/wombat.vim") ||
-            \ filereadable($VIM . "/vimfiles/colors/wombat.vim") ||
-            \ filereadable($HOME . "/.vim/colors/wombat.vim")
-    colorscheme wombat
-else
-    colorscheme desert
-endif
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-set history=50 " keep 50 lines of command line history
-set ruler " show the cursor position all the time
-set showcmd " display incomplete commands
-set incsearch " do incremental searching
-
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 let &guioptions = substitute(&guioptions, "t", "", "g")
 
@@ -67,6 +47,19 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 
+" Manage colors.
+if filereadable($VIMRUNTIME . "/colors/wombat256.vim") ||
+            \ filereadable($VIM . "/vimfiles/colors/wombat256.vim") ||
+            \ filereadable($HOME . "/.vim/colors/wombat256.vim")
+    colorscheme wombat256
+elseif filereadable($VIMRUNTIME . "/colors/wombat.vim") ||
+            \ filereadable($VIM . "/vimfiles/colors/wombat.vim") ||
+            \ filereadable($HOME . "/.vim/colors/wombat.vim")
+    colorscheme wombat
+else
+    colorscheme desert
+endif
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -78,7 +71,7 @@ if has("autocmd")
 
     " Put these in an autocmd group, so that we can delete them easily.
     augroup vimrcEx
-        au!
+        autocmd!
 
         " For all text files set 'textwidth' to 78 characters.
         autocmd FileType text setlocal textwidth=78
@@ -95,10 +88,22 @@ if has("autocmd")
 
     augroup END
 
+    augroup matches
+        autocmd!
+        autocmd BufWinEnter * match Overlength /\%81v.*/
+        autocmd BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
+        " Matches are memory greedy, shut them when the window is left
+        " Mybe it is redondant.
+        autocmd BufWinLeave * call clearmatches()
+    augroup END
+
+    augroup status
+        autocmd!
+        autocmd BufWinEnter,BufWritePost * let g:svn_status = system("svn status " . expand("%:p")) != ""
+        set list listchars=tab:\ \ ,trail:.
+
 else
-
     set autoindent " always set autoindenting on
-
 endif " has("autocmd")
 
 " Convenient command to see the difference between the current buffer and the
@@ -108,6 +113,17 @@ if !exists(":DiffOrig")
     command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
                 \ | wincmd p | diffthis
 endif
+
+"""""""""""""
+"  Options  "
+"""""""""""""
+
+" Allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+set history=50 " keep 50 lines of command line history
+set ruler " show the cursor position all the time
+set showcmd " display incomplete commands
+set incsearch " do incremental searching
 
 " Update the path with the dir where we opened Vim
 set path=.,$PWD/**
@@ -126,6 +142,10 @@ set vb t_vb=
 
 " Show status bar
 set laststatus=2
+
+" Status of the file for SVN.
+
+set statusline=%!DrawStatusLine()
 
 " Highlight current line
 set cursorline
@@ -149,7 +169,7 @@ set lazyredraw
 set keywordprg=
 
 " Diff always vertical
-set diffopt=vertical
+set diffopt+=vertical
 
 " Use utf-8
 set encoding=utf-8
@@ -157,10 +177,6 @@ set fileencoding=utf-8
 
 " Remember buffer changes when jumping around.
 set hidden
-
-"""""""""""""""""
-" Developpement "
-"""""""""""""""""
 
 " Line numbers
 set nu
@@ -172,32 +188,38 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
+" Special indentation for switch / case
+" Indentation when in unclosed (.
+set cino=l1,(0
+
 " Show when a line exceeds 80 chars
 highlight Overlength ctermbg=red ctermfg=white guibg=#592929
-au BufWinEnter * match Overlength /\%81v.*/
 
 " Highlight Tabs and Spaces
 " highlight Tab ctermbg=darkgray guibg=darkgray
 " au BufWinEnter * let w:m2=matchadd('Tab', '/[^\t]\zs\t\+/', -1)
 highlight Space ctermbg=darkblue guibg=darkblue
-au BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
-set list listchars=tab:\ \ ,trail:.
 
-" Matches are memory greedy, shut them when the window is left
-" Mybe it is redondant.
-autocmd BufWinLeave * call clearmatches()
+" Redraw status line when saving.
+" autocmd BufWritePost * set statusline=%!DrawStatusLine()
 
-" Special indentation for switch / case
-" Indentation when in unclosed (.
-set cino=l1,(0
+"""""""""""""
+" Variables "
+"""""""""""""
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
 " Load Doxygen syntax
 let g:load_doxygen_syntax=1
 
-"""""""""""""""""
 " Taglist
-"""""""""""""""""
 let Tlist_Use_Right_Window=1
+
+" Used in DrawStatusLine()
+let g:svn_status = 0
 
 """""""""""""""""
 " cscope
@@ -225,11 +247,6 @@ map Q gq
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " After repeating command, return where we were.
 map . .`[
@@ -260,17 +277,7 @@ nmap <silent> <leader>ev :tabnew $HOME/.vimrc<CR>
 " source .vimrc
 nmap <silent> <leader>sv :so $HOME/.vimrc<CR>
 
-" Build C symbols.
-function! BuildSymbols()
-    if has("cscope") && executable("cscope") && !has("gui_win32")
-        " kill all connection.
-        execute "cs kill -1"
-        execute "!ctags -R && cscope -Rb"
-        execute "cs add cscope.out"
-    else
-        execute "!ctags -R"
-    endif
-endfunction
+nnoremap <silent><leader>dh :call SVNDiff()<CR>
 
 " Build symbols with F2.
 nnoremap <F2> :call BuildSymbols()<CR>
@@ -283,4 +290,54 @@ nnoremap <F4> :26Vexplore<CR>
 
 " When you forgot to open the file as sudo.
 cmap w!! %!sudo tee > /dev/null %
+
+"""""""""""""
+" Fonctions "
+"""""""""""""
+
+" Build C symbols.
+function! BuildSymbols()
+    if has("cscope") && executable("cscope") && !has("gui_win32")
+        " kill all connection.
+        execute "cs kill -1"
+        execute "!ctags -R && cscope -Rb"
+        execute "cs add cscope.out"
+    else
+        execute "!ctags -R"
+    endif
+endfunction
+
+" Run Vim diff on HEAD copy in SVN.
+function! SVNDiff()
+    let fn = expand("%:p")
+    let newfn = fn .  ".HEAD"
+    let catstat = system("svn cat " . fn . " > " . newfn)
+    if catstat == 0
+        execute 'diffsplit ' . newfn
+        execute 'set filetype=c'
+    else
+        echo "*** ERROR: svn cat failed for ". fn . " (as " . newfn . ")"
+    endif
+endfunction
+
+" Draw the status line.
+" Status line that rocks.
+function! DrawStatusLine()
+    let l:status = ""
+    if g:svn_status == 1
+        let l:status .= "%#error#"
+    endif
+    let l:status .= "%t"       "tail of the filename
+    let l:status .= "%*"
+    let l:status .= "[%{strlen(&fenc)?&fenc:'none'}," "file encoding
+    let l:status .= "%{&ff}]" "file format
+    let l:status .= "%h"      "help file flag
+    let l:status .= "%m"      "modified flag
+    let l:status .= "%r"      "read only flag
+    let l:status .= "%="      "left/right separator
+    let l:status .= "%c,"     "cursor column
+    let l:status .= "%l/%L"   "cursor line/total lines
+    let l:status .= "\ %P"    "percent through file
+    return l:status
+endfunction
 
