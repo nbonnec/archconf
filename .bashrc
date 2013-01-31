@@ -122,8 +122,16 @@ alias l='ls -CF'
 alias ls='ls --color=auto'
 
 #other aliases
-alias yupdate='sudo yaourt -Syu'
-alias update='sudo pacman -Syu'
+system=`uname -a`
+case ${system,,} in
+    *"ubuntu"*)
+        alias update='sudo apt-get update && sudo apt-get upgrade'
+        ;;
+    *)
+        alias yupdate='sudo yaourt -Syu'
+        alias update='sudo pacman -Syu'
+        ;;
+esac
 alias givm='gvim'
 
 # set a fancy prompt
