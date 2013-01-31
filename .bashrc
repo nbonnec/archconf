@@ -74,6 +74,7 @@ esac
 
 # Avoid the break of completion on variables using cd.
 complete -r cd
+complete -r cp
 
 # History Options
 # ###############

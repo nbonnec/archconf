@@ -34,6 +34,7 @@ endif
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 let &guioptions = substitute(&guioptions, "t", "", "g")
+set guioptions-=m
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -99,8 +100,11 @@ if has("autocmd")
 
     augroup status
         autocmd!
-        autocmd BufWinEnter,BufWritePost * let g:svn_status = system("svn status " . expand("%:p")) != ""
-        set list listchars=tab:\ \ ,trail:.
+        if executable("svn")
+            autocmd BufReadPre,BufWritePost *.c,*.h
+                        \ let b:svn_status = SVNGetStatus()
+        endif
+    augroup END
 
 else
     set autoindent " always set autoindenting on
@@ -139,6 +143,8 @@ set virtualedit=all
 set errorbells
 set novisualbell
 set vb t_vb=
+
+set list listchars=tab:\ \ ,trail:.
 
 " Show status bar
 set laststatus=2
@@ -219,7 +225,11 @@ let g:load_doxygen_syntax=1
 let Tlist_Use_Right_Window=1
 
 " Used in DrawStatusLine()
-let g:svn_status = 0
+let b:svn_status=0
+
+" Use bash syntax highlighting for script.
+let g:is_bash=1
+let g:is_posix=1
 
 """""""""""""""""
 " cscope
@@ -324,7 +334,7 @@ endfunction
 " Status line that rocks.
 function! DrawStatusLine()
     let l:status = ""
-    if g:svn_status == 1
+    if exists("b:svn_status") && b:svn_status
         let l:status .= "%#error#"
     endif
     let l:status .= "%t"       "tail of the filename
@@ -339,5 +349,18 @@ function! DrawStatusLine()
     let l:status .= "%l/%L"   "cursor line/total lines
     let l:status .= "\ %P"    "percent through file
     return l:status
+endfunction
+
+" Return 1 if modified.
+function! SVNGetStatus()
+    let status = system("svn status " . expand("%:p"))
+
+    if status == ""
+        return 0
+    elseif matchstr(status, 'E[0-9]\+') != ""
+        return 0
+    else
+        return 1
+    endif
 endfunction
 

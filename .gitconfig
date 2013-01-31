@@ -10,3 +10,4 @@
         co = checkout
         st = status
         br = branch
+        logg = log --oneline --graph --decorate
