@@ -25,9 +25,9 @@ alias cvs="cvs -z3"
 
 alias reboot="shutdown -r now"
 
-alias update="sudo pacman -Syyu"
+alias update="sudo pacman-color -Syyu"
 alias yupdate="sudo yaourt -Syyu"
-alias pac="sudo pacman"
+alias pac="sudo pacman-color"
 alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 
 # do a du -hs on each dir on current path
