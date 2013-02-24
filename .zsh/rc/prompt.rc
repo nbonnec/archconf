@@ -9,7 +9,7 @@ date_color="white"
 
 host="%{$fg[$host_color]%}%n@%m"
 cpath="%B%{$fg[$path_color]%}%/%b"
-end="%{$reset_color%}%%
-"
+end="%{$reset_color%}
+%% "
 
 PS1="$host $cpath $end"

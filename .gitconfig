@@ -1,13 +1,23 @@
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
 [user]
-	name = nico
-	email = the.vegeta@gmail.com
+    name = nico
+    mail = the.vegeta@gmail.com
+    email = the.vegeta@gmail.com
 [alias]
-        ci = commit
-        co = checkout
-        st = status
-        br = branch
-        logg = log --oneline --graph --decorate
+    ci = commit
+    co = checkout
+    st = status -s
+    br = branch
+    cl = clone
+    undo = reset --soft HEAD^
+    sta = status
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    logtree ="log --graph --oneline --decorate --all"
+    alias = "!git config -l | grep alias | cut -c 7-"
+    logg = log --oneline --graph --decorate
+[push]
+    default = current

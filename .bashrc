@@ -121,6 +121,8 @@ alias lla='ls -hlAF'
 alias l='ls -CF'
 alias ls='ls --color=auto'
 
+alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
+
 #other aliases
 system=`uname -a`
 case ${system,,} in
