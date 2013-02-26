@@ -127,7 +127,7 @@ alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/us
 system=`uname -a`
 case ${system,,} in
     *"ubuntu"*)
-        alias update='sudo apt-get update && sudo apt-get upgrade'
+        alias update='sudo apt-get update; sudo apt-get upgrade'
         ;;
     *)
         alias yupdate='sudo yaourt -Syu'
