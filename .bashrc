@@ -128,6 +128,7 @@ system=`uname -a`
 case ${system,,} in
     *"ubuntu"*)
         alias update='sudo apt-get update; sudo apt-get upgrade'
+        export TERM=xterm-256color
         ;;
     *)
         alias yupdate='sudo yaourt -Syu'
