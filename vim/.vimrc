@@ -91,7 +91,7 @@ if has("autocmd")
 
     augroup matches
         autocmd!
-        autocmd BufWinEnter * match Overlength /\%81v.*/
+        autocmd BufWinEnter * match Overlength /\%>80v.*/
         autocmd BufWinEnter * let w:m3=matchadd('Space', '\s\+$\| \+\ze\t', -1)
         " Matches are memory greedy, shut them when the window is left
         " Mybe it is redondant.
@@ -286,6 +286,9 @@ nmap <leader>/ :nohlsearch<CR>
 nmap <silent> <leader>ev :tabnew $HOME/.vimrc<CR>
 " source .vimrc
 nmap <silent> <leader>sv :so $HOME/.vimrc<CR>
+
+" delete trailing spaces
+nmap <silent> <leader>ds :%s/\s\+$//g<CR>
 
 nnoremap <silent><leader>dh :call SVNDiff()<CR>
 

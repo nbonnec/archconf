@@ -28,3 +28,6 @@ SVN :
 - récupérer son historique sur un repos.
     svn log https://gaston/svn | sed -n '/| nbonnec |/,/-----$/ p' > log
 
+wget:
+    - aspirer site web
+    - wget -r -k -E -np http://tar.get/wanted/directory/
