@@ -21,6 +21,8 @@
 # #####################
 export EDITOR="vim"
 
+export VBOX_USB=usbfs
+
 # Shell Options
 # #############
 # Cygwin
@@ -132,7 +134,7 @@ case ${system,,} in
         ;;
     *)
         alias yupdate='sudo yaourt -Syu'
-        alias update='sudo pacman -Syu'
+        alias update='sudo pacman -Sy linux-headers --needed && sudo pacman -Su'
         ;;
 esac
 alias givm='gvim'
