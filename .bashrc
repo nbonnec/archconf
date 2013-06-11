@@ -115,6 +115,8 @@ alias du='du -h'
 # alias whence='type -a'                        # where, of a sort
 alias grep='grep -n --color'                    # show differences in colour
 alias egrep='egrep -n --color'                  # show differences in colour
+alias grepc='find . -name "*.[ch]" -print0 | xargs -0 grep -n --color'
+alias sedc='find . -name "*.[ch]" -print0 | xargs -0 sed'
 
 # Aliases
 alias ll='ls -hlF'
@@ -155,12 +157,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m' # début de la ligne d'état
 export LESS_TERMCAP_se=$'\E[0m'        # fin
 export LESS_TERMCAP_us=$'\E[01;32m'    # début de souligné
 export LESS_TERMCAP_ue=$'\E[0m'        # fin
-
-# Function to retrieve a word in c files and headers.
-grepc()
-{
-    find . -name "*.[ch]" | xargs grep -n --color $1
-}
 
 # Get the history on a SVN repo for a user.
 # $1 the user,
