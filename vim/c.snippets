@@ -29,6 +29,7 @@ snippet #if
 # Header Include-Guard
 # (the randomizer code is taken directly from TextMate; it could probably be
 # cleaner, I don't know how to do it in vim script)
+# ifndef ${1:`toupper(Filename('', 'UNTITLED').'_H')`}
 snippet once
 	#ifndef ${1:`toupper(system("echo -n ".shellescape(Filename('', 'UNTITLED'))."| sed 's/-/_/g'").'_H')`}
 	#define $1
@@ -36,6 +37,7 @@ snippet once
 	${2}
 
 	#endif /* $1 */
+	
 # If Condition
 snippet if
 	if (${1:/* condition */}) {

@@ -288,7 +288,7 @@ nmap <silent> <leader>ev :tabnew $HOME/.vimrc<CR>
 nmap <silent> <leader>sv :so $HOME/.vimrc<CR>
 
 " delete trailing spaces
-nmap <silent> <leader>ds :%s/\s\+$//g<CR>
+nmap <silent> <leader>ds :%s/\s\+$//g<CR><C-O>
 
 nnoremap <silent><leader>dh :call SVNDiff()<CR>
 

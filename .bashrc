@@ -116,7 +116,7 @@ alias du='du -h'
 alias grep='grep -n --color'                    # show differences in colour
 alias egrep='egrep -n --color'                  # show differences in colour
 alias grepc='find . -name "*.[ch]" -print0 | xargs -0 grep -n --color'
-alias sedc='find . -name "*.[ch]" -print0 | xargs -0 sed'
+alias sedc='find . -name "*.[ch]" -print0 | xargs -0 sed -i'
 
 # Aliases
 alias ll='ls -hlF'
@@ -124,6 +124,8 @@ alias la='ls -CAF'
 alias lla='ls -hlAF'
 alias l='ls -CF'
 alias ls='ls --color=auto'
+
+#alias rsync='rsync -aP --exclude=".svn" --exclude="*~" --exclude="cscope.*"'
 
 alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 
