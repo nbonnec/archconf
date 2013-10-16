@@ -136,6 +136,9 @@ case ${system,,} in
         alias update='sudo apt-get update; sudo apt-get upgrade'
         export TERM=xterm-256color
         ;;
+    *"Cygwin"*)
+        alias update='setup-x86.exe -qng'
+        ;;
     *)
         alias yupdate='sudo yaourt -Syu'
         alias update='sudo pacman -Sy linux-headers --needed && sudo pacman -Su'

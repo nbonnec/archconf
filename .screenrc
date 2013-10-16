@@ -96,7 +96,7 @@ altscreen on
 
 hardstatus off
 hardstatus alwayslastline
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W} %c %{g}]'
+hardstatus string '%{= kW}[ %{m}%H %{W}][%= %{= kw}%?%-Lw%?%{r}(%{g}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{W}][%{Y} %d/%m %{Y}%c %{W}]'
 
 # X scrollback
 termcapinfo xterm* ti@:te@
