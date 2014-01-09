@@ -31,3 +31,8 @@ SVN :
 wget:
     - aspirer site web
     - wget -r -k -E -np http://tar.get/wanted/directory/
+
+bash:
+    - naviguer dans les anciens arguments :
+Par ex je veux retrouver le premier argument d'une ancienne commande. Taper alt-1,
+puis alt-_ jusqu'à retrouver le bon. Pour le deuxième, commencer par alt-2, etc...
