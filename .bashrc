@@ -30,6 +30,7 @@ if [ -n "$OS" ] && [ "$OS" = "Windows_NT" ]
 then
     export DISPLAY=:0.0
     export TRAVAIL="/cygdrive/c/Travail"
+    export PIC="/cygdrive/c/Program Files/Microchip/MPLAB C30/support/PIC24F/h/"
     unset TMP
     unset TEMP
     export TEMP=/tmp
@@ -169,5 +170,19 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 svn_hist()
 {
     svn log -v $2 | sed -n '/| '$1' |/,/-----$/ p'
+}
+
+# Set classic arguments on files.
+svn_ps()
+{
+    svn ps svn:eol-style "native" "$@"
+    svn ps svn:keywords "Id" "$@"
+}
+
+# Add files to trunk with classic arguments.
+svn_add()
+{
+    svn add "$@"
+    svn_ps "$@"
 }
 

@@ -128,6 +128,8 @@ set history=50 " keep 50 lines of command line history
 set ruler " show the cursor position all the time
 set showcmd " display incomplete commands
 set incsearch " do incremental searching
+" set ignorecase
+" set smartcase " case sensitive only when there is one uppercase (with ic)
 
 " Update the path with the dir where we opened Vim
 set path=.,$PWD/**
@@ -150,7 +152,6 @@ set list listchars=tab:\ \ ,trail:.
 set laststatus=2
 
 " Status of the file for SVN.
-
 set statusline=%!DrawStatusLine()
 
 " Highlight current line
@@ -299,7 +300,7 @@ nnoremap <F2> :call BuildSymbols()<CR>
 nnoremap <F3> :TlistToggle<CR>
 
 " Open a explorer on a vertical split of 26.
-nnoremap <F4> :26Vexplore<CR>
+nnoremap <F4> :20Vexplore<CR>
 
 " When you forgot to open the file as sudo.
 cmap w!! %!sudo tee > /dev/null %
