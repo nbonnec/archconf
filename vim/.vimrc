@@ -162,6 +162,9 @@ set scrolloff=3
 " Backup
 set nobackup
 
+" No annoying swap files
+set noswapfile
+
 " No preview in ins-completion.
 set completeopt=menu
 

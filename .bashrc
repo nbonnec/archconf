@@ -30,6 +30,7 @@ if [ -n "$OS" ] && [ "$OS" = "Windows_NT" ]
 then
     export DISPLAY=:0.0
     export TRAVAIL="/cygdrive/c/Travail"
+    export PIC="/cygdrive/c/Program Files/Microchip/MPLAB C30/support/PIC24F/h/"
     unset TMP
     unset TEMP
     export TEMP=/tmp
@@ -124,8 +125,7 @@ alias la='ls -CAF'
 alias lla='ls -hlAF'
 alias l='ls -CF'
 alias ls='ls --color=auto'
-
-#alias rsync='rsync -aP --exclude=".svn" --exclude="*~" --exclude="cscope.*"'
+alias givm='gvim'
 
 alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 
@@ -144,7 +144,6 @@ case ${system,,} in
         alias update='sudo pacman -Sy linux-headers --needed && sudo pacman -Su'
         ;;
 esac
-alias givm='gvim'
 
 # set a fancy prompt
 if [ -n "$SSH_CLIENT" ] ; then
@@ -169,5 +168,28 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 svn_hist()
 {
     svn log -v $2 | sed -n '/| '$1' |/,/-----$/ p'
+}
+
+# Set classic arguments on files.
+svn_ps()
+{
+    svn ps svn:eol-style "native" "$@"
+    svn ps svn:keywords "Id" "$@"
+}
+
+# Add files to trunk with classic arguments.
+svn_add()
+{
+    svn add "$@"
+    svn_ps "$@"
+}
+
+# Sync for gaston
+# $1 source,
+# $2 dest.
+sync_gaston()
+{
+    rsync -aP --exclude=".hex" --exclude=".o" --exclude=".svn" --exclude="*~" \
+        --exclude="cscope.*" "$1" frbon-ws0001:~/"$2"
 }
 
