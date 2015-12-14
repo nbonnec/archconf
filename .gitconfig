@@ -20,4 +20,4 @@
     alias = "!git config -l | grep alias | cut -c 7-"
     logg = log --oneline --graph --decorate
 [push]
-    default = current
+    default = simple
