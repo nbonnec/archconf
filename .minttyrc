@@ -1,0 +1,5 @@
+BoldAsFont=no
+Font=DejaVu Sans Mono
+FontHeight=10
+Term=xterm-256color
+Charset=UTF-8

@@ -125,6 +125,7 @@ alias la='ls -CAF'
 alias lla='ls -hlAF'
 alias l='ls -CF'
 alias ls='ls --color=auto'
+alias givm='gvim'
 
 alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 
@@ -143,7 +144,6 @@ case ${system,,} in
         alias update='sudo pacman -Sy linux-headers --needed && sudo pacman -Su'
         ;;
 esac
-alias givm='gvim'
 
 # set a fancy prompt
 if [ -n "$SSH_CLIENT" ] ; then
