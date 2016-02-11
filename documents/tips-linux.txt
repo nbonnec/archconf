@@ -28,11 +28,16 @@ SVN :
 - récupérer son historique sur un repos.
     svn log https://gaston/svn | sed -n '/| nbonnec |/,/-----$/ p' > log
 
-wget:
+wget :
     - aspirer site web
     - wget -r -k -E -np http://tar.get/wanted/directory/
 
-bash:
+bash :
     - naviguer dans les anciens arguments :
 Par ex je veux retrouver le premier argument d'une ancienne commande. Taper alt-1,
 puis alt-_ jusqu'à retrouver le bon. Pour le deuxième, commencer par alt-2, etc...
+
+
+Log :
+./xxx.exe | tee ./$(date '+log_%F_%T').txt
+

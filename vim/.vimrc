@@ -274,7 +274,7 @@ noremap <Esc>l gt
 
 " Remap the Esc command
 inoremap kj <Esc>
-inoremap lk <Esc>
+"inoremap lk <Esc>
 
 " Better for wrapped lines
 nnoremap j gj

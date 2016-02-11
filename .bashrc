@@ -126,8 +126,6 @@ alias lla='ls -hlAF'
 alias l='ls -CF'
 alias ls='ls --color=auto'
 
-#alias rsync='rsync -aP --exclude=".svn" --exclude="*~" --exclude="cscope.*"'
-
 alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/usr/bin/pacman-color; $PACMAN $@'
 
 #other aliases
@@ -184,5 +182,14 @@ svn_add()
 {
     svn add "$@"
     svn_ps "$@"
+}
+
+# Sync for gaston
+# $1 source,
+# $2 dest.
+sync_gaston()
+{
+    rsync -aP --exclude=".hex" --exclude=".o" --exclude=".svn" --exclude="*~" \
+        --exclude="cscope.*" "$1" frbon-ws0001:~/"$2"
 }
 
