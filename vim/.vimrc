@@ -274,7 +274,6 @@ noremap <Esc>l gt
 
 " Remap the Esc command
 inoremap kj <Esc>
-"inoremap lk <Esc>
 
 " Better for wrapped lines
 nnoremap j gj
@@ -284,7 +283,7 @@ nnoremap k gk
 inoremap <leader>, <C-x><C-o>
 
 " Turn off highlighting in search.
-nmap <leader>/ :nohlsearch<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
 
 " edit .vimrc
 nmap <silent> <leader>ev :tabnew $HOME/.vimrc<CR>
@@ -294,7 +293,11 @@ nmap <silent> <leader>sv :so $HOME/.vimrc<CR>
 " delete trailing spaces
 nmap <silent> <leader>ds :%s/\s\+$//g<CR><C-O>
 
-nnoremap <silent><leader>dh :call SVNDiff()<CR>
+" toggle spelling
+nmap <silent> <leader>su :setlocal spell! spelllang=en_us<CR>
+nmap <silent> <leader>sf :setlocal spell! spelllang=fr_fr<CR>
+
+nnoremap <silent> <leader>dh :call SVNDiff()<CR>
 
 " Build symbols with F2.
 nnoremap <F2> :call BuildSymbols()<CR>
