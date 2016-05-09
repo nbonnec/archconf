@@ -23,8 +23,8 @@ fi
 print_usage() {
     echo "Tool to merge a bootloader and an application:"
     echo " -h   - display this help message"
-    echo " -a   - name of the application file"
-    echo " -b   - name of the bootloader file"
+    echo " -a   - name of the application file (Intel hex)"
+    echo " -b   - name of the bootloader file (Intel hex)"
     echo " -o   - name of the output file (default: standard output)"
     echo " -v   - verbose mode"
 }
@@ -59,6 +59,7 @@ while getopts ":b:a:o:hv" opt; do
     esac
 done
 
+# Verbose on or off.
 chatter() {
     if [[ $verbose ]]; then
         chatter() {
@@ -91,14 +92,24 @@ fi
 
 #
 # Here is the interesting part !
+# For help, see srec_input, srec_examples and srec_cat manuals.
 #
+
+# Remove ISR lines...
 clean_boot="$boot_hex -Intel -exclude $ISR_START_ADDR $BOOT_START_ADDR"
+# and application lines of bootloader HEX.
 clean_boot+=" $APP_START_ADDR -maximum-addr $boot_hex -Intel"
 
+# Take goto lines and move them before bootloader lines
 goto_part="$app_hex -Intel -crop 0 $ISR_START_ADDR -offset=$GOTO_START_ADDR"
+# Take ISR lines...
 appli_part="$app_hex -Intel -crop $ISR_START_ADDR $GOTO_START_ADDR"
-appli_part+=" $APP_START_ADDR -maximum-addr $boot_hex -Intel"
+# and application lines of application HEX.
+appli_part+=" $APP_START_ADDR -maximum-addr $app_hex -Intel"
 
 chatter srec_cat $clean_boot $goto_part $appli_part -o \
     $merge_hex -Intel -obs=16
+
+# Make sure it is in DOS format for the production team.
+chatter u2d $merge_hex
 
