@@ -131,7 +131,7 @@ alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/us
 
 #other aliases
 system=`uname -a`
-case ${system,,} in
+case $system in
     *"ubuntu"*)
         alias update='sudo apt-get update; sudo apt-get upgrade'
         export TERM=xterm-256color
