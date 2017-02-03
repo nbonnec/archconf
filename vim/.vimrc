@@ -101,7 +101,7 @@ if has("autocmd")
     augroup status
         autocmd!
         if executable("svn")
-            autocmd BufReadPre,BufWritePost *.c,*.h
+            autocmd BufReadPre,BufWritePost *.c,*.cpp,*.h,*.hpp
                         \ let b:svn_status = SVNGetStatus()
         endif
     augroup END
@@ -191,12 +191,12 @@ set hidden
 " Line numbers
 set nu
 
-" Tabulation of 4 spaces
+" Tabulation of 2 spaces
 set expandtab
 set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 " Special indentation for switch / case
 " Indentation when in unclosed (.

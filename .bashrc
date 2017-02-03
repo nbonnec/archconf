@@ -116,8 +116,10 @@ alias du='du -h'
 # alias whence='type -a'                        # where, of a sort
 alias grep='grep -n --color'                    # show differences in colour
 alias egrep='egrep -n --color'                  # show differences in colour
-alias grepc='find . -name "*.[ch]" -print0 | xargs -0 grep -n --color'
-alias sedc='find . -name "*.[ch]" -print0 | xargs -0 sed -i'
+alias grepc='find . \( -name "*.[ch]" -or -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 grep -n --color=always'
+alias sedc='find . \( -name "*.[ch]" -or -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i'
+alias sdiffc='find . \( -name "*.[ch]" -or -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 svn diff'
+alias findc='find . \( -name "*.[ch]" -or -name "*.cpp" -or -name "*.hpp" \) -print0'
 
 # Aliases
 alias ll='ls -hlF'
