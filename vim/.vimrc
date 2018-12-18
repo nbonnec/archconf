@@ -132,11 +132,11 @@ set incsearch " do incremental searching
 " set smartcase " case sensitive only when there is one uppercase (with ic)
 
 " Update the path with the dir where we opened Vim
-set path=.,$PWD/**
+"set path=.,$PWD/**
 " Now that we set the path to be recursive, disable
 " the option that looking for completion in included files.
 " Indeed, it can slow the process hard. We use tags instead.
-set complete-=i
+"set complete-=i
 
 " Allow editing everywhere
 set virtualedit=all
@@ -200,7 +200,7 @@ set tabstop=2
 
 " Special indentation for switch / case
 " Indentation when in unclosed (.
-set cino=l1,(0
+set cino=l1,(0,N-s
 
 " Show when a line exceeds 80 chars
 highlight Overlength ctermbg=red ctermfg=white guibg=#592929
@@ -235,6 +235,12 @@ let b:svn_status=0
 let g:is_bash=1
 let g:is_posix=1
 
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+
+let g:base16_shell_path="base16-builder/output/shell/"
 """""""""""""""""
 " cscope
 """""""""""""""""
@@ -372,5 +378,11 @@ function! SVNGetStatus()
     else
         return 1
     endif
+endfunction
+
+function! SetTabSize(size)
+    let &shiftwidth=a:size
+    let &softtabstop=a:size
+    let &tabstop=a:size
 endfunction
 
