@@ -19,6 +19,7 @@
 
 # Environment Variables
 # #####################
+export DISPLAY=:0
 export EDITOR="vim"
 
 export VBOX_USB=usbfs
