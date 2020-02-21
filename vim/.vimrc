@@ -119,6 +119,12 @@ if !exists(":DiffOrig")
 endif
 
 """""""""""""
+"  pathogen "
+"""""""""""""
+execute pathogen#infect()
+
+
+"""""""""""""
 "  Options  "
 """""""""""""
 

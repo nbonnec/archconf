@@ -89,6 +89,12 @@ complete -r cp
 # Don't put duplicate lines in the history.
 export HISTCONTROL="ignoredups"
 
+# Increase the number of commands to remember in the command history
+export HISTSIZE=10000
+
+# Increase the number of lines in the history file
+export HISTFILESIZE=10000
+
 # Ignore some controlling instructions
 # HISTIGNORE is a colon-delimited list of patterns which should be excluded.
 # The '&' is a special pattern which suppresses duplicate entries.
@@ -139,7 +145,7 @@ alias pacman='PACMAN=/usr/bin/pacman; [ -f /usr/bin/pacman-color ] && PACMAN=/us
 system=`uname -a`
 case $system in
     *"ubuntu"*)
-        alias update='sudo apt-get update; sudo apt-get upgrade'
+        alias update='sudo apt update; sudo apt upgrade'
         export TERM=xterm-256color
         ;;
     *"Cygwin"*)
@@ -188,14 +194,5 @@ svn_add()
 {
     svn add "$@"
     svn_ps "$@"
-}
-
-# Sync for gaston
-# $1 source,
-# $2 dest.
-sync_gaston()
-{
-    rsync -aP --exclude=".hex" --exclude=".o" --exclude=".svn" --exclude="*~" \
-        --exclude="cscope.*" "$1" frbon-ws0001:~/"$2"
 }
 
