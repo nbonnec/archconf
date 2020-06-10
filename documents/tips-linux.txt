@@ -42,3 +42,8 @@ puis alt-_ jusqu'à retrouver le bon. Pour le deuxième, commencer par alt-2, et
 Log :
 ./xxx.exe | tee ./$(date '+log_%F_%T').txt
 
+Count tabs indent in source:
+grep -Poh '^\t+(if|do|while|for|switch)\b' . | \
+  sed -r 's/\w+//g' | \
+  awk '{print length($0);}' | \
+  sort | uniq -c | sort -rn

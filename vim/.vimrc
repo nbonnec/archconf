@@ -197,12 +197,12 @@ set hidden
 " Line numbers
 set nu
 
-" Tabulation of 2 spaces
+" Tabulation of 4 spaces
 set expandtab
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 " Special indentation for switch / case
 " Indentation when in unclosed (.
@@ -387,8 +387,9 @@ function! SVNGetStatus()
 endfunction
 
 function! SetTabSize(size)
+    set autoindent
+    set noexpandtab
     let &shiftwidth=a:size
-    let &softtabstop=a:size
     let &tabstop=a:size
 endfunction
 
