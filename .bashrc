@@ -127,6 +127,7 @@ alias du='du -h'
 alias grep='grep -n --color'                    # show differences in colour
 alias egrep='egrep -n --color'                  # show differences in colour
 alias grepc='find . \( -name "*.[ch]" -or -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 grep -n --color=always'
+alias grepcpp='find . \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 grep -n --color=always'
 alias sedc='find . \( -name "*.[ch]" -or -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i'
 alias sdiffc='find . \( -name "*.[ch]" -or -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 svn diff'
 alias findc='find . \( -name "*.[ch]" -or -name "*.cpp" -or -name "*.hpp" \) -print0'

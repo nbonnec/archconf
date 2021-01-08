@@ -47,3 +47,11 @@ grep -Poh '^\t+(if|do|while|for|switch)\b' . | \
   sed -r 's/\w+//g' | \
   awk '{print length($0);}' | \
   sort | uniq -c | sort -rn
+
+Powershell:
+
+To auto complete like bash.
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
+Loop.
+Get-ChildItem . * | ForEach-Object { python.exe .\script.py $_}
